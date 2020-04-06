@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import babel from 'rollup-plugin-babel';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -46,7 +47,10 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+        babel({
+            exclude: 'node_modules/**'
+		})
 	],
 	watch: {
 		clearScreen: false
