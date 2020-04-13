@@ -1,30 +1,31 @@
 <script>
-	export let name;
+    import DATA  from "./constants/data";
+	import Header_container from "./containers/Header_container.svelte";
+	import Home_container from "./containers/Home_container.svelte";
+	import Footer_container from "./containers/Footer_container.svelte";
+	
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Header_container 
+	headingProfilData={DATA.PROFIL_DATA}
+	socialData={DATA.SOCIAL_DATA}
+	/>
+	<Home_container 
+	skillsData={DATA.SKILLS_DATA}
+	toolsData={DATA.TOOLS_DATA}
+	trustData={DATA.TRUST_DATA}
+	cvData={DATA.CV_DATA}
+	/>
+	<Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	:global(body) {
+		transition: background-color 0.3s
 	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	:global(body.dark) {
+		background-color: #363537;
+		color: #FAFAFA;
 	}
 </style>
