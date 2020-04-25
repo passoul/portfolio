@@ -3,6 +3,6 @@
     const { TEXT } = copyrightData;
 </script>
 
-<div className="copyright">
+<div class="copyright">
     <p>{TEXT}</p>
 </div>

@@ -3,9 +3,9 @@
     const { TITLE, URL } = cvData;
 </script>
 
-<div className="download-cv">
+<section class="download-cv">
     {TITLE}
-    <button className="cv-btn">
+    <button class="cv-btn">
         <a href={URL}>{TITLE}</a>
     </button>
-</div>
+</section>

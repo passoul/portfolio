@@ -18,7 +18,7 @@ export default {
                 "target": "_target",
             },
             {
-                "name": "tweeter",
+                "name": "twitter",
                 "url": "https://twitter.com/Sp_Devfront",
                 "rel": "external",
                 "target": "_target",

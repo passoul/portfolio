@@ -1,0 +1,10 @@
+// DARK THÈME CONST
+const DARKMODECLASSNAME = "mode-dark";
+const LOCALSTORAGEITEM = "theme";
+
+const ENV_CONST = {
+  DARKMODECLASSNAME,
+  LOCALSTORAGEITEM,
+};
+
+export default ENV_CONST;

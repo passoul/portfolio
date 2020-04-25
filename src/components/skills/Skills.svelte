@@ -3,43 +3,23 @@
     const { TITLE, LISTS } = skillsData;
 </script>
 
-<div className="skills">
-    <div className="skills-title">
+<section class="skills">
+    <div class="skills-title">
         {TITLE}
     </div>
-    <div className="cat-box">
+    <div class="cat-box">
         {#each LISTS as { cat_title, cat_items }, i}
-            <div className="cat-title">
+            <div class="cat-title">
                 {cat_title}
             </div>
-            <ul className="cat_item-list">
+            <ul class="cat_item-list">
                 {#each cat_items as { name, level }, i}
-                    <li className="cat-item">
-                        <div className="cat-item-title">{name}</div>
-                        <div className="cat-item-level">{level}</div>
+                    <li class="cat-item">
+                        <div class="cat-item-title">{name}</div>
+                        <div class="cat-item-level">{level}</div>
                     </li>
                 {/each}
             </ul>
         {/each}
     </div>
-</div>
-<!-- <div className="skills">
-    <div className="skills-title">
-        {skillsProp.title}
-    </div>
-    {skillsProp.items.map((cat, index) => (
-        <div className="cat-box">
-            <div className="cat-title">
-                {cat.cat_title}
-            </div>
-            <ul className="cat_item-list">
-                {cat.cat_items.map((item, i) => (
-                    <li className="cat-item">
-                        <div className="cat-item-title">{item.name}</div>
-                        <div className="cat-item-level">{item.level}</div>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    ))}
-</div> -->
+</section>

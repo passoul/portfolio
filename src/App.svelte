@@ -3,29 +3,24 @@
 	import Header_container from "./containers/Header_container.svelte";
 	import Home_container from "./containers/Home_container.svelte";
 	import Footer_container from "./containers/Footer_container.svelte";
-	
-</script>
+  import Tailwindcss from './components/tailwindcss/Tailwindcss.svelte';
 
+</script>
+<Header_container navlists={DATA.NAVBAR_DATA}/>
 <main>
-	<Header_container 
+	<Home_container 
 	headingProfilData={DATA.PROFIL_DATA}
 	socialData={DATA.SOCIAL_DATA}
-	/>
-	<Home_container 
 	skillsData={DATA.SKILLS_DATA}
 	toolsData={DATA.TOOLS_DATA}
 	trustData={DATA.TRUST_DATA}
 	cvData={DATA.CV_DATA}
 	/>
-	<Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
 </main>
-
+<Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
 <style>
 	:global(body) {
-		transition: background-color 0.3s
-	}
-	:global(body.dark) {
-		background-color: #363537;
-		color: #FAFAFA;
+		font-family: OpenSans, Arial, Helvetica, sans-serif;
+		transition: background-color 0.3s;
 	}
 </style>

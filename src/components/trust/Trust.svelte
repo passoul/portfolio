@@ -3,17 +3,17 @@
     const { TITLE, COMPANIES } = trustData;
 </script>
 
-<div className="trust">
-    <div className="trust_title">
+<section class="trust">
+    <div class="trust_title">
         {TITLE}
     </div>
-    <ul className="companies-list">
+    <ul class="companies-list">
         {#each COMPANIES as { name, logo }, i}
-            <li className="item">
-                <div className="logo">
+            <li class="item">
+                <div class="logo">
                     <img src={logo} alt={name}/>
                 </div>
             </li>
         {/each}
     </ul>
-</div>
+</section>

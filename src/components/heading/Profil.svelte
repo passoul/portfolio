@@ -5,7 +5,7 @@
     
 </script>
 
-<div className="Profession">
+<div class="profession">
     <h1>{profession}</h1>
     <h2>{firstname} {lastname}</h2>
 </div>

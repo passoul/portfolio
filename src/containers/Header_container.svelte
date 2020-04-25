@@ -1,22 +1,23 @@
 <script>
-	import Avatar from "../components/avatar/Avatar.svelte";
-	import Profil from "../components/heading/Profil.svelte";
-	import Social from "../components/buttons/social/Social.svelte";
-	import Switch from "../components/buttons/switch/Switch.svelte";
+	import Navbar from "../components/navbar/Navbar.svelte";
+	import Toggle from "../components/buttons/toggle/Toggle.svelte";
 
-    export let headingProfilData = {};
-    const { AVATAR, PROFESSION, FIRSTNAME, LASTNAME } = headingProfilData;
-    export let socialData;
+	export let navlists;
 
 </script>
 
 <header>
-	<Avatar avatar={AVATAR}/>
-	<Profil 
-	profession={PROFESSION}
-	firstname={FIRSTNAME}
-	lastname={LASTNAME}
-	/>
-	<Social {socialData}/>
-	<Switch/>
+	<Navbar navlists={navlists}/>
+	<Toggle/>
 </header>
+<style>
+	@media screen and (min-width: 1024px) {
+		header {
+			background-image: url("/static/media/passoul.png");
+			background-repeat: no-repeat;
+			background-position: right;
+			background-attachment: scroll;
+			height: 478px;
+		}
+	}
+</style>

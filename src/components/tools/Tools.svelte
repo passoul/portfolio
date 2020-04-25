@@ -3,15 +3,15 @@
     const { TITLE, LISTS } = toolsData;
 </script>
 
-<div className="tools">
-    <div className="tools-title">
+<section class="tools">
+    <div class="tools-title">
         {TITLE}
     </div>
-    <ul className="tools-items-list">
+    <ul class="tools-items-list">
         {#each LISTS as list, i}
-            <li className="tools-item">
+            <li class="tools-item">
                 {list}
             </li>
         {/each}
     </ul>
-</div>
+</section>
