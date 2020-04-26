@@ -1,5 +1,5 @@
 <script>
-  import Switch from '@smui/switch';
+  import { Switch } from "smelte";
   import ENV_CONST from "../../../constants/constants";
 
   const { DARKMODECLASSNAME, LOCALSTORAGEITEM } = ENV_CONST;
@@ -12,7 +12,7 @@
     : window.document.body.classList.remove(DARKMODECLASSNAME);
 
   function toggleThemeChange() {
-    if (darkMode === false) {
+    if (darkMode === true) {
       // Update localstorage
       localStorage.setItem(LOCALSTORAGEITEM, DARKMODECLASSNAME);
       window.document.body.classList.add(DARKMODECLASSNAME);
@@ -24,6 +24,6 @@
   }
 </script>
 
-<div class="togglebutton">
-  <Switch on:click="{toggleThemeChange}" bind:checked={darkMode} />
+<div class="togglebutton" on:click="{toggleThemeChange}">
+  <Switch bind:value={darkMode} />
 </div>

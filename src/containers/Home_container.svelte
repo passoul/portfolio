@@ -16,13 +16,15 @@
     export let cvData;
     
 </script>
-<Avatar avatar={AVATAR}/>
-<Profil 
-profession={PROFESSION}
-firstname={FIRSTNAME}
-lastname={LASTNAME}
-/>
-<Social {socialData}/>
+<section class="profil">
+    <Avatar avatar={AVATAR}/>
+    <Profil 
+    profession={PROFESSION}
+    firstname={FIRSTNAME}
+    lastname={LASTNAME}
+    />
+    <Social {socialData}/>
+</section>
 <Skills {skillsData}/>
 <Tools {toolsData}/>
 <Trust {trustData}/>

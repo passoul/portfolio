@@ -3,7 +3,7 @@
 	import Header_container from "./containers/Header_container.svelte";
 	import Home_container from "./containers/Home_container.svelte";
 	import Footer_container from "./containers/Footer_container.svelte";
-  import Tailwindcss from './components/tailwindcss/Tailwindcss.svelte';
+  	import "smelte/src/tailwind.css";
 
 </script>
 <Header_container navlists={DATA.NAVBAR_DATA}/>
@@ -23,4 +23,4 @@
 		font-family: OpenSans, Arial, Helvetica, sans-serif;
 		transition: background-color 0.3s;
 	}
-</style>
+  </style>

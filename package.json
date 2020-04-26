@@ -39,6 +39,7 @@
     "@okrad/svelte-progressbar": "^1.4.0",
     "@storybook/addon-knobs": "^5.3.18",
     "sirv-cli": "^0.4.4",
+    "smelte": "^1.0.12",
     "svelte-awesome": "^2.3.0",
     "svelte-material-ui": "^1.0.0-beta.21",
     "uninstall": "0.0.0"

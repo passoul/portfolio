@@ -2,10 +2,10 @@ import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
-import postcss from "rollup-plugin-postcss";
 import autoPreprocess from "svelte-preprocess";
 import { terser } from "rollup-plugin-terser";
 import babel from "rollup-plugin-babel";
+import smelte from "smelte/rollup-plugin-smelte";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -27,7 +27,6 @@ export default {
         css.write("public/static/css/bundle.css");
       },
       emitCss: false,
-      css: true,
       // adding the preprocess into svelte loader
       // preprocess,
       preprocess: autoPreprocess({ postcss: true }),
@@ -43,17 +42,13 @@ export default {
       dedupe: ["svelte"],
     }),
     commonjs(),
-    postcss({
-      extract: "public/static/css/material.css",
-      minimize: production,
-      use: [
-        [
-          "sass",
-          {
-            includePaths: ["./src/theme", "./node_modules"],
-          },
-        ],
-      ],
+    smelte({
+      purge: production,
+      output: "public/static/css/global.css", // it defaults to static/global.css which is probably what you expect in Sapper
+      postcss: [], // Your PostCSS plugins
+      whitelist: [], // Array of classnames whitelisted from purging
+      whitelistPatterns: [], // Same as above, but list of regexes
+      tailwind: [], // Any other props will be applied on top of default Smelte tailwind.config.js
     }),
 
     // In dev mode, call `npm run start` once
