@@ -1,5 +1,0 @@
-body{transition:background-color 0.3s
-	}body.dark{background-color:#363537;color:#FAFAFA}
-.switch.svelte-1w0pdmf.svelte-1w0pdmf{position:relative;display:inline-block;width:60px;height:34px}.switch.svelte-1w0pdmf input.svelte-1w0pdmf{opacity:0;width:0;height:0}.slider.svelte-1w0pdmf.svelte-1w0pdmf{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;-webkit-transition:.4s;transition:.4s}.slider.svelte-1w0pdmf.svelte-1w0pdmf:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:white;-webkit-transition:.4s;transition:.4s}input:checked+.slider.svelte-1w0pdmf.svelte-1w0pdmf{background-color:#2196F3}input:focus+.slider.svelte-1w0pdmf.svelte-1w0pdmf{box-shadow:0 0 1px #2196F3}input:checked+.slider.svelte-1w0pdmf.svelte-1w0pdmf:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px)}.slider.round.svelte-1w0pdmf.svelte-1w0pdmf{border-radius:34px}.slider.round.svelte-1w0pdmf.svelte-1w0pdmf:before{border-radius:50%}
-
-/*# sourceMappingURL=bundle.css.map */
