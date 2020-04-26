@@ -44,7 +44,7 @@ export default {
     commonjs(),
     smelte({
       purge: production,
-      output: "public/static/css/global.css", // it defaults to static/global.css which is probably what you expect in Sapper
+      output: "public/static/css/utils.css", // it defaults to static/global.css which is probably what you expect in Sapper
       postcss: [], // Your PostCSS plugins
       whitelist: [], // Array of classnames whitelisted from purging
       whitelistPatterns: [], // Same as above, but list of regexes
