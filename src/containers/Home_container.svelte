@@ -60,7 +60,7 @@
 </section>
 <style>
     .profil {
-        background-image: url("/static/media/top-bg.jpg");
+        background-image: url("/static/media/background/top-bg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
