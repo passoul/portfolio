@@ -1,5 +1,5 @@
 import "../css/utils.css";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 
 import Avatar from "../../src/components/avatar/Avatar.svelte";
 

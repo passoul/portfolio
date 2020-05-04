@@ -4,7 +4,7 @@
   export let lastname;
 </script>
 
-<div class="profession">
-  <h1>{profession}</h1>
-  <h2>{firstname} {lastname}</h2>
+<div class="profession w-full">
+  <h1 class="my-4 text-2xl font-bold leading-tight capitalize">{profession}</h1>
+  <p class="leading-normal text-lg mb-4 capitalize">{firstname} {lastname}</p>
 </div>

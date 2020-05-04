@@ -1,6 +1,15 @@
 const path = require("path");
 
 module.exports = ({ config, mode }) => {
+  const svelteLoader = config.module.rules.find(
+    (r) => r.loader && r.loader.includes("svelte-loader")
+  );
+  svelteLoader.options = {
+    ...svelteLoader.options,
+    emitCss: false,
+    hotReload: false,
+  };
+
   config.module.rules.push(
     {
       test: /\.css$/,
@@ -18,14 +27,18 @@ module.exports = ({ config, mode }) => {
 
       include: path.resolve(__dirname, "../storybook/"),
     },
-    //This is the new block for the addon
     {
       test: /\.stories\.js?$/,
-      loaders: [require.resolve("@storybook/addon-storysource/loader")],
+      loaders: [require.resolve("@storybook/source-loader")],
       include: [path.resolve(__dirname, "../storybook")],
       enforce: "pre",
     }
   );
+  // config.resolve.modules = [
+  //   ...(config.resolve.modules || []),
+  //   path.resolve("./src/"),
+  //   path.resolve("./storybook/"),
+  // ];
 
   return config;
 };

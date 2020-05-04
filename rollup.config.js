@@ -7,6 +7,7 @@ import { terser } from "rollup-plugin-terser";
 import babel from "rollup-plugin-babel";
 import smelte from "smelte/rollup-plugin-smelte";
 
+// Const
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
@@ -21,15 +22,16 @@ export default {
     svelte({
       // enable run-time checks when not in production
       dev: !production,
+      // adding the preprocess into svelte loader
+      // preprocess,
+      preprocess: autoPreprocess({ postcss: true }),
+      emitCss: false,
       // we'll extract any component CSS out into
       // a separate file - better for performance
       css: (css) => {
         css.write("public/static/css/bundle.css");
       },
-      emitCss: false,
-      // adding the preprocess into svelte loader
-      // preprocess,
-      preprocess: autoPreprocess({ postcss: true }),
+      // css: true,
     }),
 
     // If you have external dependencies installed from
@@ -44,7 +46,7 @@ export default {
     commonjs(),
     smelte({
       purge: production,
-      output: "public/static/css/utils.css", // it defaults to static/global.css which is probably what you expect in Sapper
+      output: "public/static/css/global.css", // it defaults to static/global.css which is probably what you expect in Sapper
       postcss: [], // Your PostCSS plugins
       whitelist: [], // Array of classnames whitelisted from purging
       whitelistPatterns: [], // Same as above, but list of regexes

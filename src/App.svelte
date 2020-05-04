@@ -3,11 +3,10 @@
 	import Header_container from "./containers/Header_container.svelte";
 	import Home_container from "./containers/Home_container.svelte";
 	import Footer_container from "./containers/Footer_container.svelte";
-  	import "smelte/src/tailwind.css";
-
+	import "smelte/src/tailwind.css";
 </script>
-<Header_container navlists={DATA.NAVBAR_DATA}/>
-<main>
+<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} />
+<main class="lg:pt-16">
 	<Home_container 
 	headingProfilData={DATA.PROFIL_DATA}
 	socialData={DATA.SOCIAL_DATA}
@@ -19,8 +18,32 @@
 </main>
 <Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
 <style>
-	:global(body) {
-		font-family: OpenSans, Arial, Helvetica, sans-serif;
-		transition: background-color 0.3s;
+	@font-face{
+		font-family: 'Open Sans';
+  		src: url('/static/fonts/OpenSans-Regular.ttf') format('woff2');		
+	}	
+	@font-face{
+		font-family: 'Open Sans';
+		  src: url('/static/fonts/OpenSans-SemiBold.ttf') format('woff2');		
+		  font-weight: SemiBold;
+	}	
+	@font-face{
+		font-family: 'Montserrat';
+  		src: url('/static/fonts/Montserrat-Regular.ttf') format('woff2');		
 	}
-  </style>
+	:global(html) {
+		font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	}
+	:global(h1){
+		font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	}
+	:global(body) {
+		background: #ECE9E6;  
+	}
+	/* Apply to wave-top svg */
+	:global(body.mode-dark) {
+		background: #000000;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+</style>

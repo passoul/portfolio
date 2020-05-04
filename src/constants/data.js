@@ -1,15 +1,19 @@
+const THEMESWITCH_DATA = {
+  TEXTDARK: "go dark",
+  TEXTLIGHT: "go light",
+};
 const NAVBAR_DATA = [
-  { id: 1, url: "/", label: "Home" },
-  { id: 2, url: "#skills&tools", label: "Skills & Tools" },
-  { id: 3, url: "#trust", label: "Trust" },
-  { id: 4, url: "#download", label: "Download" },
+  { id: 1, url: "#skills", label: "skills" },
+  { id: 2, url: "#tools", label: "tools" },
+  { id: 3, url: "#trust", label: "trust" },
+  { id: 4, url: "#download", label: "download" },
 ];
 const PROFIL_DATA = {
   AVATAR: {
     alt: "ceci est ma photo",
     src: "./static/media/avatar/avatar.png",
   },
-  PROFESSION: "Front End Developer",
+  PROFESSION: "front end developer",
   FIRSTNAME: "pascal",
   LASTNAME: "soulier",
 };
@@ -38,7 +42,7 @@ const SKILLS_DATA = {
       ],
     },
     {
-      cat_title: "frameworks",
+      cat_title: "frameworks and library",
       cat_items: [
         {
           name: "sass",
@@ -63,6 +67,10 @@ const SKILLS_DATA = {
         {
           name: "react",
           level: 45,
+        },
+        {
+          name: "svelte",
+          level: 65,
         },
       ],
     },
@@ -119,7 +127,8 @@ const TRUST_DATA = {
   ],
 };
 const CV_DATA = {
-  TITLE: "donwload my cv",
+  TITLE: "download my cv",
+  BTNTEXT: "download",
   URL: "/assets/Pascal-Soulier-Front-End.pdf",
 };
 const SOCIAL_DATA = {
@@ -142,6 +151,7 @@ const COPYRIGHT_DATA = {
   TEXT: "copyright © pascal Soulier 2020",
 };
 const MOCK_DATA = {
+  THEMESWITCH_DATA,
   NAVBAR_DATA,
   PROFIL_DATA,
   SKILLS_DATA,

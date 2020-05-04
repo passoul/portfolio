@@ -7,11 +7,33 @@
     <title>Pascal Soulier - Cv/Resume</title>
 
     <link rel="icon" type="image/png" href="./favicon.png" />
-    <link rel="stylesheet" href="./static/css/utils.css" />
+    <link rel="stylesheet" href="./static/css/global.css" />
     <link rel="stylesheet" href="./static/css/bundle.css" />
 
     <script defer src="./static/js/bundle.js"></script>
+    <script defer src="./static/js/pace.js"></script>
+    <style>
+      .pace {
+        -webkit-pointer-events: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      .pace-inactive {
+        display: none;
+      }
+      .pace .pace-progress {
+        background: #a923a9;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 5px;
+      }
+    </style>
   </head>
 
-  <body></body>
+  <body class="leading-normal tracking-normal"></body>
 </html>

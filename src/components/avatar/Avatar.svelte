@@ -1,11 +1,12 @@
 <script>
+  import { Image } from "smelte";
   export let avatar = {};
+  export let avatarClass;
+  export let widthHeight;
   const { alt, src } = avatar;
-  export let rounded = true;
 </script>
 
-<div class="avatar">
-  <img class="{rounded ? 'rounded-full' : '' } object-center" {alt} {src} />
+<div class="avatar {avatarClass}">
+  <Image {alt} {src} class="rounded-full" width={widthHeight} height={widthHeight} />
+  <!-- <img {alt} {src} class="rounded-full" /> -->
 </div>
-
-<style></style>

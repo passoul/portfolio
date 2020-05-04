@@ -1,5 +1,32 @@
 <script>
+  import { Switch, Tooltip } from "smelte";
+  import ENV_CONST from "../../constants/constants";
+  // Toggle theme btn
+  const { DARKMODECLASSNAME, LOCALSTORAGEITEM } = ENV_CONST;
+
+  const currentTheme = localStorage.getItem(LOCALSTORAGEITEM);
+  let darkMode = currentTheme === DARKMODECLASSNAME ? true : false;
+
+  currentTheme === DARKMODECLASSNAME
+    ? window.document.body.classList.add(DARKMODECLASSNAME)
+    : window.document.body.classList.remove(DARKMODECLASSNAME);
+
+  function toggleThemeChange() {
+    if (darkMode === true) {
+      // Update localstorage
+      localStorage.setItem(LOCALSTORAGEITEM, DARKMODECLASSNAME);
+      window.document.body.classList.add(DARKMODECLASSNAME);
+    } else {
+      // Update localstorage
+      localStorage.removeItem(LOCALSTORAGEITEM);
+      window.document.body.classList.remove(DARKMODECLASSNAME);
+    }
+  }
+  // Props
   export let navlists = [];
+  export let switchBtn = {};
+  const { TEXTDARK, TEXTLIGHT } = switchBtn;
+
   let active = false;
   function onClickMenu() {
     active = !active;
@@ -7,7 +34,7 @@
 </script>
 <nav class="navbar {active ? 'navbar-active': ''}">
   <button
-    class="navbar-toggler"
+    class="navbar-toggler lg:hidden"
     type="button"
     data-toggle="collapse"
     data-target="#navbarNav"
@@ -18,18 +45,41 @@
   >
     <span class="navbar-toggler-bar"></span>
   </button>
-  <div class="navbar-content" id="navbarNav">
-    <ul class="nav">
+  <div
+    class="navbar-content w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 lg:h-16 z-20 hidden"
+    id="navbarNav"
+  >
+    <ul
+      class="nav list-reset lg:flex justify-end flex-1 items-center capitalize"
+    >
       {#each navlists as list}
-      <li class="nav-item">
-        <a class="nav-link light-color" href="{list.url}">{list.label}</a>
+      <li class="nav-item mr-3">
+        <a
+          class="nav-link inline-block py-2 px-4 font-bold no-underline hover:bg-white-transLight rounded"
+          href="{list.url}"
+          >{list.label}</a
+        >
       </li>
       {/each}
     </ul>
+    <!-- <div class="togglebutton mx-auto lg:mx-0 mt-4 lg:mt-0 py-5 px-8 opacity-75 lg:flex" on:click="{toggleThemeChange}"> -->
+    <Tooltip class="capitalize">
+      <div slot="activator" on:click="{toggleThemeChange}" class="tooltip">
+        <Switch bind:value={darkMode} label={darkMode ? TEXTLIGHT : TEXTDARK} />
+      </div>
+      {darkMode ? TEXTLIGHT : TEXTDARK}
+    </Tooltip>
+    <!-- </div> -->
   </div>
 </nav>
 
 <style type="text/scss">
+  :global(.tooltip > div) {
+    margin-bottom: 0;
+  }
+  :global(.tooltip label) {
+    @apply sr-only;
+  }
   /* .navbar {
     position: fixed;
     right: 5px;
