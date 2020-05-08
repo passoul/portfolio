@@ -982,7 +982,7 @@ var app = (function () {
       }]
     };
     var CV_DATA = {
-      TITLE: "download my cv",
+      TITLE: "my cv",
       BTNTEXT: "download",
       URL: "/static/download/Pascal-Soulier-Front-End.pdf"
     };
@@ -8518,7 +8518,6 @@ var app = (function () {
     	};
 
     	let scrolling_timeout;
-    	let header;
     	let div1;
     	let div0;
     	let a;
@@ -8548,7 +8547,6 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			header = element("header");
     			div1 = element("div");
     			div0 = element("div");
     			a = element("a");
@@ -8557,21 +8555,17 @@ var app = (function () {
     			create_component(navbar.$$.fragment);
     			attr_dev(a, "href", "/");
     			attr_dev(a, "class", "px-2 md:px-8 flex items-center");
-    			add_location(a, file$f, 26, 3, 686);
+    			add_location(a, file$f, 25, 2, 593);
     			attr_dev(div0, "class", "pl-4 lg:flex items-center");
-    			add_location(div0, file$f, 25, 2, 643);
+    			add_location(div0, file$f, 24, 1, 551);
     			attr_dev(div1, "class", "w-full container mx-auto flex flex-wrap items-center justify-between mt-0");
-    			add_location(div1, file$f, 24, 1, 553);
-    			attr_dev(header, "class", "fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 svelte-1eujezq");
-    			attr_dev(header, "id", "header");
-    			add_location(header, file$f, 23, 0, 462);
+    			add_location(div1, file$f, 23, 0, 462);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor, remount) {
-    			insert_dev(target, header, anchor);
-    			append_dev(header, div1);
+    			insert_dev(target, div1, anchor);
     			append_dev(div1, div0);
     			append_dev(div0, a);
     			mount_component(avatar_1, a, null);
@@ -8615,7 +8609,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(header);
+    			if (detaching) detach_dev(div1);
     			destroy_component(avatar_1);
     			destroy_component(navbar);
     			dispose();
@@ -10595,29 +10589,29 @@ var app = (function () {
     			div6 = element("div");
     			create_component(download.$$.fragment);
     			attr_dev(div0, "class", "flex flex-col w-full justify-center items-start text-center lg:text-left pb-4");
-    			add_location(div0, file$n, 23, 8, 1184);
-    			attr_dev(div1, "class", "profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 svelte-19i398h");
-    			add_location(div1, file$n, 21, 8, 935);
-    			attr_dev(div2, "class", "container mx-auto flex flex-wrap flex-col lg:flex-row");
+    			add_location(div0, file$n, 23, 8, 1216);
+    			attr_dev(div1, "class", "profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-5/6 lg:w-auto\t svelte-19i398h");
+    			add_location(div1, file$n, 21, 8, 950);
+    			attr_dev(div2, "class", "container mx-auto flex flex-wrap flex-col lg:flex-row content-center");
     			add_location(div2, file$n, 20, 4, 859);
     			attr_dev(section0, "class", "profil mx-auto flex flex-wrap flex-col lg:flex-row items-center bg-black svelte-19i398h");
     			add_location(section0, file$n, 19, 0, 764);
     			attr_dev(div3, "class", "container mx-auto pt-4 pb-6");
-    			add_location(div3, file$n, 38, 4, 1684);
+    			add_location(div3, file$n, 38, 4, 1716);
     			attr_dev(section1, "class", "border-b pb-8 dark:bg-gray-900 dark:border-gray-800 bg-white");
-    			add_location(section1, file$n, 37, 0, 1601);
+    			add_location(section1, file$n, 37, 0, 1633);
     			attr_dev(div4, "class", "container mx-auto pt-4 pb-6");
-    			add_location(div4, file$n, 43, 4, 1862);
+    			add_location(div4, file$n, 43, 4, 1894);
     			attr_dev(section2, "class", "border-b py-8 bg-white dark:bg-gray-900 dark:border-gray-600");
-    			add_location(section2, file$n, 42, 0, 1779);
+    			add_location(section2, file$n, 42, 0, 1811);
     			attr_dev(div5, "class", "container mx-auto flex flex-wrap pt-4 pb-6");
-    			add_location(div5, file$n, 48, 4, 2011);
+    			add_location(div5, file$n, 48, 4, 2043);
     			attr_dev(section3, "class", "bg-gray-100 dark:bg-gray-800 py-8");
-    			add_location(section3, file$n, 47, 0, 1955);
+    			add_location(section3, file$n, 47, 0, 1987);
     			attr_dev(div6, "class", "container mx-auto");
-    			add_location(div6, file$n, 56, 4, 2211);
+    			add_location(div6, file$n, 56, 4, 2243);
     			attr_dev(section4, "class", "text-center py-6 pb-6");
-    			add_location(section4, file$n, 55, 0, 2167);
+    			add_location(section4, file$n, 55, 0, 2199);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11027,7 +11021,6 @@ var app = (function () {
     const file$p = "src/containers/Footer_container.svelte";
 
     function create_fragment$q(ctx) {
-    	let footer;
     	let div;
     	let t;
     	let current;
@@ -11050,22 +11043,18 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			footer = element("footer");
     			div = element("div");
     			create_component(copyright.$$.fragment);
     			t = space();
     			create_component(social.$$.fragment);
     			attr_dev(div, "class", "container mx-auto px-8 w-full flex flex-col md:flex-row py-5");
-    			add_location(div, file$p, 10, 4, 252);
-    			attr_dev(footer, "class", "bg-dark-transLight");
-    			add_location(footer, file$p, 9, 0, 212);
+    			add_location(div, file$p, 9, 0, 212);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, footer, anchor);
-    			append_dev(footer, div);
+    			insert_dev(target, div, anchor);
     			mount_component(copyright, div, null);
     			append_dev(div, t);
     			mount_component(social, div, null);
@@ -11091,7 +11080,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(footer);
+    			if (detaching) detach_dev(div);
     			destroy_component(copyright);
     			destroy_component(social);
     		}
@@ -11189,10 +11178,13 @@ var app = (function () {
     const file$q = "src/App.svelte";
 
     function create_fragment$r(ctx) {
+    	let header;
     	let t0;
     	let main;
     	let main_class_value;
     	let t1;
+    	let footer;
+    	let footer_class_value;
     	let current;
 
     	const header_container = new Header_container({
@@ -11228,30 +11220,43 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			header = element("header");
     			create_component(header_container.$$.fragment);
     			t0 = space();
     			main = element("main");
     			create_component(home_container.$$.fragment);
     			t1 = space();
+    			footer = element("footer");
     			create_component(footer_container.$$.fragment);
+    			attr_dev(header, "class", "fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 svelte-1apl2k7");
+    			attr_dev(header, "id", "header");
+    			add_location(header, file$q, 13, 0, 409);
     			attr_dev(main, "class", main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7");
-    			add_location(main, file$q, 14, 0, 552);
+    			add_location(main, file$q, 16, 0, 653);
+    			attr_dev(footer, "class", footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7");
+    			add_location(footer, file$q, 26, 0, 923);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			mount_component(header_container, target, anchor);
+    			insert_dev(target, header, anchor);
+    			mount_component(header_container, header, null);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, main, anchor);
     			mount_component(home_container, main, null);
     			insert_dev(target, t1, anchor);
-    			mount_component(footer_container, target, anchor);
+    			insert_dev(target, footer, anchor);
+    			mount_component(footer_container, footer, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
     			if (!current || dirty & /*menuIsActive*/ 1 && main_class_value !== (main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7")) {
     				attr_dev(main, "class", main_class_value);
+    			}
+
+    			if (!current || dirty & /*menuIsActive*/ 1 && footer_class_value !== (footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7")) {
+    				attr_dev(footer, "class", footer_class_value);
     			}
     		},
     		i: function intro(local) {
@@ -11268,12 +11273,14 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(header_container, detaching);
+    			if (detaching) detach_dev(header);
+    			destroy_component(header_container);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(main);
     			destroy_component(home_container);
     			if (detaching) detach_dev(t1);
-    			destroy_component(footer_container, detaching);
+    			if (detaching) detach_dev(footer);
+    			destroy_component(footer_container);
     		}
     	};
 
