@@ -4,9 +4,15 @@
 	import Home_container from "./containers/Home_container.svelte";
 	import Footer_container from "./containers/Footer_container.svelte";
 	import "smelte/src/tailwind.css";
+
+	let menuIsActive;
+
+	function handleMessage(event) {
+		menuIsActive = event.detail.toggleMenuBtnClick;
+	}
 </script>
-<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} />
-<main class="lg:pt-16">
+<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:message={handleMessage} />
+<main class="lg:pt-16 {menuIsActive ? 'blur-block' : ''}">
 	<Home_container 
 	headingProfilData={DATA.PROFIL_DATA}
 	socialData={DATA.SOCIAL_DATA}
@@ -55,5 +61,9 @@
 	}
 	:global(.bg-custom:hover){
 		background-color: var(--color-custom-400); 
+	}
+	.blur-block{
+		filter: blur(8px);
+		-webkit-filter: blur(8px);
 	}
 </style>

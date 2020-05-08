@@ -9,12 +9,13 @@
   >
     {TITLE}
   </div>
-  <ul class="companies-list p-6">
+  <ul
+    class="companies-list p-6 flex justify-around flex-col sm:flex-row flex-wrap w-full items-center"
+  >
     {#each COMPANIES as { name, logo, svg }, i}
-    <li class="item">
+    <li class="item my-6">
       <div class="logo">
         {@html svg}
-        <img src="{logo}" alt="{name}" />
       </div>
     </li>
     {/each}

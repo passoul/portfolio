@@ -12,11 +12,13 @@
   } from "svelte-awesome/icons";
   import { fly } from "svelte/transition";
   import ENV_CONST from "../../constants/constants";
+  import { createEventDispatcher } from 'svelte';
   // Toggle theme btn
   const { DARKMODECLASSNAME, LOCALSTORAGEITEM } = ENV_CONST;
   // IconTab
   const iconTab = [barChart, handshakeO, filePdfO, wrench];
-  console.log("iconTab", iconTab);
+
+  const dispatch = createEventDispatcher();
   const currentTheme = localStorage.getItem(LOCALSTORAGEITEM);
   let darkMode = currentTheme === DARKMODECLASSNAME ? true : false;
 
@@ -41,6 +43,12 @@
   const { TEXTDARK, TEXTLIGHT } = switchBtn;
 
   let active = false;
+
+  function handleMenu() {
+    dispatch('message', {
+      toggleMenuBtnClick: active
+    });
+  }
 </script>
 <nav
   class="navbar {active ? 'navbar-active': 'w-12 h-12 '} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
@@ -52,7 +60,7 @@
     <Button
       remove="rounded py-2 px-4 {active ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"
       add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black"
-      on:click="{() => (active = !active)}"
+      on:click="{() => {active = !active; handleMenu()}}"
       data-toggle="collapse"
       data-target="#navbarNav"
       aria-controls="navbarNav"
@@ -152,11 +160,6 @@
   }
   .nav-item,
   .switch-theme {
-    /* border-radius: 100%; */
-    /* width: 3rem;
-    height: 3rem; */
-    /* top: 0;
-    left: 0; */
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     -webkit-transition: -webkit-transform ease-out 200ms;

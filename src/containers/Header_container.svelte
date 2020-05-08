@@ -18,7 +18,6 @@
 			header.classList.remove("shadow");
 		}
 	})();
-
 </script>
 <svelte:window  bind:scrollY={y}/>
 
@@ -29,7 +28,7 @@
 			<Avatar avatar={avatar} avatarClass="hidden lg:block w-10 h-10" widthHeight="40"/>
 			</a>
 		</div>
-		<Navbar {navlists} {switchBtn}/>
+		<Navbar {navlists} {switchBtn} on:message/>
 	</div>
 </header>
 
