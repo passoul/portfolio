@@ -22,7 +22,7 @@
 </script>
 <svelte:window  bind:scrollY={y}/>
 
-<header class="fixed w-full z-30 top-0 bg-black text-white bg-opacity-75" id="header">
+<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
 	<div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
 		<div class="pl-4 lg:flex items-center">
 			<a href="/" class="px-2 md:px-8 flex items-center">
@@ -36,5 +36,8 @@
 <style>
 	header{
 		@apply transition ease-in duration-100;
+	}
+	:global(.mode-dark header) {
+		@apply bg-opacity-75 !important;
 	}
 </style>

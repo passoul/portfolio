@@ -1,6 +1,8 @@
 <script>
   import { Button } from "smelte";
   import Icon from "svelte-awesome";
+  import { download } from "svelte-awesome/icons";
+
   export let cvData = {};
   const { TITLE, BTNTEXT, URL } = cvData;
 </script>
@@ -11,12 +13,16 @@
   >
     {TITLE}
   </h1>
-  <!-- <button
-    class="cv-btn mx-auto lg:mx-0 hover:underline  text-gray-800 font-bold my-6 py-4 px-8"
-  >
-    <a href="{URL}">{TITLE}</a>
-  </button> -->
-  <div class="mx-auto lg:mx-0 my-6 py-4 px-8">
-    <Button href="{URL}">{BTNTEXT}</Button>
+  <div class="mx-auto flex justify-center my-6 py-4 px-8">
+    <Button
+      href="{URL}"
+      remove="font-medium bg-primary-500 hover:bg-primary-400"
+      add="flex flex-wrap bg-custom text-black"
+    >
+      <Icon data="{download}" scale="1.2"></Icon>
+      <div class="ml-2">
+        {BTNTEXT}
+      </div>
+    </Button>
   </div>
 </div>

@@ -19,13 +19,13 @@
         class="opacity-50 hover:opacity-100"
       >
         {#if name === "twitter"}
-        <Icon data="{twitter}" title="{name}" label="{name}" scale="1.5"></Icon>
+        <Icon data="{twitter}" title="{name}" label="{name}" scale="1.2"></Icon>
         {/if} {#if name === "linkedin"}
         <Icon
           data="{linkedinSquare}"
           title="{name}"
           label="{name}"
-          scale="1.5"
+          scale="1.2"
         ></Icon>
         {/if}
       </a>

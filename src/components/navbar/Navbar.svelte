@@ -1,9 +1,22 @@
 <script>
-  import { Switch, Tooltip } from "smelte";
+  import { Switch, Tooltip, Button } from "smelte";
+  import Icon from "svelte-awesome";
+  import {
+    bars,
+    times,
+    adjust,
+    barChart,
+    handshakeO,
+    filePdfO,
+    wrench,
+  } from "svelte-awesome/icons";
+  import { fly } from "svelte/transition";
   import ENV_CONST from "../../constants/constants";
   // Toggle theme btn
   const { DARKMODECLASSNAME, LOCALSTORAGEITEM } = ENV_CONST;
-
+  // IconTab
+  const iconTab = [barChart, handshakeO, filePdfO, wrench];
+  console.log("iconTab", iconTab);
   const currentTheme = localStorage.getItem(LOCALSTORAGEITEM);
   let darkMode = currentTheme === DARKMODECLASSNAME ? true : false;
 
@@ -28,150 +41,190 @@
   const { TEXTDARK, TEXTLIGHT } = switchBtn;
 
   let active = false;
-  function onClickMenu() {
-    active = !active;
-  }
 </script>
-<nav class="navbar {active ? 'navbar-active': ''}">
-  <button
-    class="navbar-toggler lg:hidden"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-    on:click="{onClickMenu}"
-  >
-    <span class="navbar-toggler-bar"></span>
-  </button>
+<nav
+  class="navbar {active ? 'navbar-active': 'w-12 h-12 '} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
+>
   <div
-    class="navbar-content w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 lg:h-16 z-20 hidden"
+    class="navbar-content w-12 h-12 lg:w-auto lg:w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block lg:mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 z-20"
     id="navbarNav"
   >
+    <Button
+      remove="rounded py-2 px-4 {active ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"
+      add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black"
+      on:click="{() => (active = !active)}"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      id="btnMenu"
+    >
+      <div
+        class="bars ease-in-out duration-300 delay-75 transition-all absolute"
+      >
+        <Icon data="{bars}" scale="1.5"></Icon>
+      </div>
+      <div
+        class="cross ease-in-out duration-300 delay-75 transition-all absolute"
+      >
+        <Icon data="{times}" scale="1.5"></Icon>
+      </div>
+    </Button>
     <ul
       class="nav list-reset lg:flex justify-end flex-1 items-center capitalize"
     >
-      {#each navlists as list}
-      <li class="nav-item mr-3">
+      {#each navlists as list, i}
+      <li class="nav-item mr-3 absolute lg:relative bg-custom rounded-full w-12 h-12 top-0 left-0">
         <a
-          class="nav-link inline-block py-2 px-4 font-bold no-underline hover:bg-white-transLight rounded"
+          class="nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black"
           href="{list.url}"
-          >{list.label}</a
         >
+          <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
+            <div slot="activator">
+              {#each iconTab as icon, i} {#each Object.entries(icon) as object}
+              {#if object[0] === list.icon}
+              <Icon data="{icon}" scale="1.5"></Icon>{/if} {/each} {/each}
+            </div>
+            {list.label}
+          </Tooltip>
+        </a>
       </li>
       {/each}
     </ul>
-    <!-- <div class="togglebutton mx-auto lg:mx-0 mt-4 lg:mt-0 py-5 px-8 opacity-75 lg:flex" on:click="{toggleThemeChange}"> -->
-    <Tooltip class="capitalize">
-      <div slot="activator" on:click="{toggleThemeChange}" class="tooltip">
-        <Switch bind:value={darkMode} label={darkMode ? TEXTLIGHT : TEXTDARK} />
-      </div>
-      {darkMode ? TEXTLIGHT : TEXTDARK}
-    </Tooltip>
-    <!-- </div> -->
+
+    <div class="switch-theme absolute lg:relative items-center text-center justify-center bg-custom rounded-full w-12 h-12 top-0 left-0">
+      <Tooltip class="capitalize bg-dark-200 bg-opacity-75">
+        <div slot="activator" on:click="{toggleThemeChange}">
+          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full relative text-black" bind:value={darkMode} flat>
+            <Icon data="{adjust}" scale="1.5" label={darkMode ? TEXTLIGHT : TEXTDARK}></Icon>
+          </Button>
+        </div>
+        {darkMode ? TEXTLIGHT : TEXTDARK}
+      </Tooltip>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="lg:hidden">
+      <defs>
+        <filter id="shadowed-goo">
+            
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+            <feGaussianBlur in="goo" stdDeviation="3" result="shadow"></feGaussianBlur>
+            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow"></feColorMatrix>
+            <feOffset in="shadow" dx="1" dy="1" result="shadow"></feOffset>
+            <feComposite in2="shadow" in="goo" result="goo"></feComposite>
+            <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
+        </filter>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+            <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
+        </filter>
+      </defs>
+  </svg>
+
   </div>
 </nav>
 
 <style type="text/scss">
-  :global(.tooltip > div) {
-    margin-bottom: 0;
+  nav .bars {
+    top: 27%;
+    left: 29%;
   }
-  :global(.tooltip label) {
+  nav .cross {
+    top: 25%;
+    left: 31%;
+  }
+  nav.navbar-active .bars {
+    transform: rotate(90deg) scale(0);
+    opacity: 0;
+  }
+  nav:not(.navbar-active) .cross {
+    transform: rotate(-90deg) scale(0);
+    opacity: 0;
+  }
+  :global(.switch-theme label) {
     @apply sr-only;
   }
-  /* .navbar {
-    position: fixed;
-    right: 5px;
-    bottom: 20px;
-    button {
-      z-index: 100;
-      width: 41px;
-      height: 41px;
-      background-color: #fff;
-      border-radius: 50% 50% 50% 50%;
-      -webkit-transition: 0.5s ease-in-out;
-      transition: 0.5s ease-in-out;
-      box-shadow: 0 0 0 0 #fff, 0 0 0 0 #fff;
-      border: none;
-      &:hover {
-        box-shadow: 0 14px 26px -12px rgba(153, 153, 153, 0.42),
-          0 4px 23px 0px rgba(0, 0, 0, 0.12),
-          0 8px 10px -5px rgba(153, 153, 153, 0.2);
-      }
+  .switch-theme{
+    @apply cursor-pointer;
+  }
+  .nav-item,
+  .switch-theme {
+    /* border-radius: 100%; */
+    /* width: 3rem;
+    height: 3rem; */
+    /* top: 0;
+    left: 0; */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform ease-out 200ms;
+    transition: -webkit-transform ease-out 200ms;
+    transition: transform ease-out 200ms;
+    transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
+  }
+  :global(.navbar-active button) {
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
+    -webkit-transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+  }
+  .navbar-active .nav-item:nth-child(1) {
+    -webkit-transition-duration: 170ms;
+    transition-duration: 170ms;
+    -webkit-transform: translate3d(80px, 0, 0);
+    transform: translate3d(0, -48px, 0);
+  }
+  .navbar-active .nav-item:nth-child(2) {
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+    -webkit-transform: translate3d(160px, 0, 0);
+    transform: translate3d(0, -96px, 0);
+  }
+  .navbar-active .nav-item:nth-child(3) {
+    -webkit-transition-duration: 330ms;
+    transition-duration: 330ms;
+    -webkit-transform: translate3d(240px, 0, 0);
+    transform: translate3d(0, -144px, 0);
+  }
+  .navbar-active .nav-item:nth-child(4) {
+    -webkit-transition-duration: 410ms;
+    transition-duration: 410ms;
+    -webkit-transform: translate3d(320px, 0, 0);
+    transform: translate3d(0, -192px, 0);
+  }
+  .navbar-active .switch-theme {
+    -webkit-transition-duration: 410ms;
+    transition-duration: 410ms;
+    -webkit-transform: translate3d(320px, 0, 0);
+    transform: translate3d(-48px, 0, 0);
+  }
+  .navbar{
+    -webkit-filter: url(#shadowed-goo);
+    filter: url(#shadowed-goo);
+  }
+  @screen lg {
+    :global(.switch-theme button, .nav-item a){
+      @apply text-black;
     }
-    & &-toggler-bar {
-      position: absolute;
-      top: calc((41px - 2px) / 2);
-      left: calc((41px - 22px) / 2);
-      width: 22px;
-      height: 2px;
-      background: #999999;
-      display: block;
-      -webkit-transform-origin: center;
-      transform-origin: center;
-      -webkit-transition: 0.5s ease-in-out;
-      transition: 0.5s ease-in-out;
-      &:after,
-      &:before {
-        -webkit-transition: 0.5s ease-in-out;
-        transition: 0.5s ease-in-out;
-        content: "";
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: #999999;
-      }
-      &:before {
-        top: -6px;
-      }
-      &:after {
-        bottom: -6px;
-      }
+    :global(.mode-dark .switch-theme button, .mode-dark .nav-item a){
+      @apply text-white
     }
-    &-content {
-      z-index: 200;
-      position: absolute;
-      top: 30%;
-      right: 10%;
-      -webkit-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      -webkit-transition: 0.25s 0s ease-in-out;
-      transition: 0.25s 0s ease-in-out;
+    .nav-item, .switch-theme {
+      @apply bg-transparent;
     }
-    a {
-      margin-bottom: 1em;
-      display: block;
-      color: #000;
-      text-decoration: none;
+    .nav-item a:hover, .switch-theme:hover {
+      @apply bg-black bg-opacity-25;
     }
-    &-active {
-      button {
-        &,
-        &:hover {
-          box-shadow: 0 0 0 25vw #fff, 0 0 0 50vh #fff;
-          border-radius: 25%;
-        }
-      }
-      .navbar-toggler-bar {
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-        &:after {
-          -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-          bottom: 0;
-        }
-        &:before {
-          -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-          top: 0;
-        }
-      }
-      .navbar-content {
-        opacity: 1;
-      }
+    .mode-dark .nav-item a:hover, .mode-dark .switch-theme:hover {      
+      @apply bg-white bg-opacity-25;
     }
-  } */
+    .navbar{
+      -webkit-filter: none;
+      filter: none;
+    }
+  }
 </style>

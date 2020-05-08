@@ -36,24 +36,24 @@
 <SeperateBar seperateBarClass="wave-top dark:bg-gray-900 bg-white"/>
 
 <section class="border-b pb-8 dark:bg-gray-900 dark:border-gray-800 bg-white">
-    <div class="container mx-auto pt-4 pb-12 ">
+    <div class="container mx-auto pt-4 pb-6">
         <Skills {skillsData}/>
     </div>
 </section>
 <section class="border-b py-8 bg-white dark:bg-gray-900 dark:border-gray-600">
-    <div class="container mx-auto pt-4 pb-12">
+    <div class="container mx-auto pt-4 pb-6">
         <Tools {toolsData}/>
     </div>
 </section>
 <section class="bg-gray-100 dark:bg-gray-800 py-8">
-    <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+    <div class="container mx-auto flex flex-wrap pt-4 pb-6">
         <Trust {trustData}/>
     </div>
 </section>
 
 <SeperateBar seperateBarClass="wave-bottom"/>
 
-<section class="text-center py-6 mb-12">
+<section class="text-center py-6 pb-6">
     <div class="container mx-auto">
         <Download {cvData}/>
     </div>

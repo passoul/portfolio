@@ -10,9 +10,10 @@
     {TITLE}
   </div>
   <ul class="companies-list p-6">
-    {#each COMPANIES as { name, logo }, i}
+    {#each COMPANIES as { name, logo, svg }, i}
     <li class="item">
       <div class="logo">
+        {@html svg}
         <img src="{logo}" alt="{name}" />
       </div>
     </li>

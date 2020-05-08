@@ -46,4 +46,14 @@
 		background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
+	:root {
+	--color-custom: #F5856D;
+	--color-custom-400: #F7977E;
+	}
+	:global(.bg-custom){
+		background-color: var(--color-custom); 
+	}
+	:global(.bg-custom:hover){
+		background-color: var(--color-custom-400); 
+	}
 </style>
