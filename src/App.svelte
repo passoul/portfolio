@@ -11,7 +11,9 @@
 		menuIsActive = event.detail.toggleMenuBtnClick;
 	}
 </script>
-<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:message={handleMessage} />
+<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
+	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:message={handleMessage} />
+</header>
 <main class="lg:pt-16 {menuIsActive ? 'blur-block' : ''}">
 	<Home_container 
 	headingProfilData={DATA.PROFIL_DATA}
@@ -22,7 +24,9 @@
 	cvData={DATA.CV_DATA}
 	/>
 </main>
-<Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
+<footer class="bg-dark-transLight {menuIsActive ? 'blur-block' : ''}">
+	<Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
+</footer>
 <style>
 	@font-face{
 		font-family: 'Open Sans';

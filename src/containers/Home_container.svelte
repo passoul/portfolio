@@ -18,8 +18,8 @@
     
 </script>
 <section class="profil mx-auto flex flex-wrap flex-col lg:flex-row items-center bg-black">
-    <div class="container mx-auto flex flex-wrap flex-col lg:flex-row">
-        <div class="profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200">
+    <div class="container mx-auto flex flex-wrap flex-col lg:flex-row content-center">
+        <div class="profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-5/6 lg:w-auto	">
         <Avatar avatar={AVATAR} avatarClass="lg:hidden" widthHeight="128"/>
         <div class="flex flex-col w-full justify-center items-start text-center lg:text-left pb-4">
             <Profil

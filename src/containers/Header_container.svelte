@@ -21,16 +21,14 @@
 </script>
 <svelte:window  bind:scrollY={y}/>
 
-<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
-	<div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
-		<div class="pl-4 lg:flex items-center">
-			<a href="/" class="px-2 md:px-8 flex items-center">
-			<Avatar avatar={avatar} avatarClass="hidden lg:block w-10 h-10" widthHeight="40"/>
-			</a>
-		</div>
-		<Navbar {navlists} {switchBtn} on:message/>
+<div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
+	<div class="pl-4 lg:flex items-center">
+		<a href="/" class="px-2 md:px-8 flex items-center">
+		<Avatar avatar={avatar} avatarClass="hidden lg:block w-10 h-10" widthHeight="40"/>
+		</a>
 	</div>
-</header>
+	<Navbar {navlists} {switchBtn} on:message/>
+</div>
 
 <style>
 	header{

@@ -137,7 +137,7 @@ const TRUST_DATA = {
   ],
 };
 const CV_DATA = {
-  TITLE: "download my cv",
+  TITLE: "my cv",
   BTNTEXT: "download",
   URL: "/static/download/Pascal-Soulier-Front-End.pdf",
 };
