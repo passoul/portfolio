@@ -7,12 +7,12 @@
 
 	let menuIsActive;
 
-	function handleMessage(event) {
+	let handleMenuBtnAction = (event) => {
 		menuIsActive = event.detail.toggleMenuBtnClick;
 	}
 </script>
 <header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
-	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:message={handleMessage} />
+	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:message={handleMenuBtnAction} />
 </header>
 <main class="lg:pt-16 {menuIsActive ? 'blur-block' : ''}">
 	<Home_container 
@@ -52,9 +52,9 @@
 	}
 	/* Apply to wave-top svg */
 	:global(body.mode-dark) {
-		background: #000000;  /* fallback for old browsers */
-		background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: #232526;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #434343, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #434343, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 	:root {
 	--color-custom: #F5856D;

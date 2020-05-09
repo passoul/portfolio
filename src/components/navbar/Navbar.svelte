@@ -26,7 +26,7 @@
     ? window.document.body.classList.add(DARKMODECLASSNAME)
     : window.document.body.classList.remove(DARKMODECLASSNAME);
 
-  function toggleThemeChange() {
+  let toggleThemeChange = () => {
     if (darkMode === true) {
       // Update localstorage
       localStorage.setItem(LOCALSTORAGEITEM, DARKMODECLASSNAME);
@@ -42,25 +42,31 @@
   export let switchBtn = {};
   const { TEXTDARK, TEXTLIGHT } = switchBtn;
 
-  let active = false;
+  let menuIsActive = false;
+  let MenuBtnpressed = false;
 
-  function handleMenu() {
+  let handleMenuDispatch = () => {
     dispatch('message', {
-      toggleMenuBtnClick: active
+      toggleMenuBtnClick: menuIsActive
     });
   }
+  let handleMenuBtnAction = () => {
+    menuIsActive = !menuIsActive;  
+    MenuBtnpressed = !MenuBtnpressed;
+    handleMenuDispatch()
+  };
 </script>
 <nav
-  class="navbar {active ? 'navbar-active': 'w-12 h-12 '} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
+  class="navbar {menuIsActive ? 'navbar-active': 'w-12 h-12 '} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
 >
   <div
     class="navbar-content w-12 h-12 lg:w-auto lg:w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block lg:mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 z-20"
     id="navbarNav"
   >
     <Button
-      remove="rounded py-2 px-4 {active ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"
+      remove="rounded py-2 px-4 {menuIsActive ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"
       add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black"
-      on:click="{() => {active = !active; handleMenu()}}"
+      on:click="{handleMenuBtnAction}"
       data-toggle="collapse"
       data-target="#navbarNav"
       aria-controls="navbarNav"
@@ -86,7 +92,7 @@
       <li class="nav-item mr-3 absolute lg:relative bg-custom rounded-full w-12 h-12 top-0 left-0">
         <a
           class="nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black"
-          href="{list.url}"
+          href="{list.url}" on:click="{MenuBtnpressed ? handleMenuBtnAction : ''}"
         >
           <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
             <div slot="activator">
