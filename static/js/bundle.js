@@ -984,7 +984,7 @@ var app = (function () {
     var CV_DATA = {
       TITLE: "my cv",
       BTNTEXT: "download",
-      URL: "/static/download/Pascal-Soulier-Front-End.pdf"
+      URL: "./static/download/Pascal-Soulier-Front-End.pdf"
     };
     var SOCIAL_DATA = {
       LISTS: [{
@@ -7382,25 +7382,25 @@ var app = (function () {
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[20] = list[i];
+    	child_ctx[21] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[18] = list[i];
-    	child_ctx[17] = i;
+    	child_ctx[19] = list[i];
+    	child_ctx[18] = i;
     	return child_ctx;
     }
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[15] = list[i];
-    	child_ctx[17] = i;
+    	child_ctx[16] = list[i];
+    	child_ctx[18] = i;
     	return child_ctx;
     }
 
-    // (60:4) <Button       remove="rounded py-2 px-4 {active ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"       add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black"       on:click="{() => {active = !active; handleMenu()}}"       data-toggle="collapse"       data-target="#navbarNav"       aria-controls="navbarNav"       aria-expanded="false"       aria-label="Toggle navigation"       id="btnMenu"     >
+    // (66:4) <Button       remove="rounded py-2 px-4 {menuIsActive ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"       add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black"       on:click="{handleMenuBtnAction}"       data-toggle="collapse"       data-target="#navbarNav"       aria-controls="navbarNav"       aria-expanded="false"       aria-label="Toggle navigation"       id="btnMenu"     >
     function create_default_slot_3(ctx) {
     	let div0;
     	let t;
@@ -7425,9 +7425,9 @@ var app = (function () {
     			div1 = element("div");
     			create_component(icon1.$$.fragment);
     			attr_dev(div0, "class", "bars ease-in-out duration-300 delay-75 transition-all absolute svelte-1qfdnen");
-    			add_location(div0, file$e, 70, 6, 2313);
+    			add_location(div0, file$e, 76, 6, 2498);
     			attr_dev(div1, "class", "cross ease-in-out duration-300 delay-75 transition-all absolute svelte-1qfdnen");
-    			add_location(div1, file$e, 75, 6, 2472);
+    			add_location(div1, file$e, 81, 6, 2657);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -7462,19 +7462,19 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(60:4) <Button       remove=\\\"rounded py-2 px-4 {active ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400\\\"       add=\\\"rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black\\\"       on:click=\\\"{() => {active = !active; handleMenu()}}\\\"       data-toggle=\\\"collapse\\\"       data-target=\\\"#navbarNav\\\"       aria-controls=\\\"navbarNav\\\"       aria-expanded=\\\"false\\\"       aria-label=\\\"Toggle navigation\\\"       id=\\\"btnMenu\\\"     >",
+    		source: "(66:4) <Button       remove=\\\"rounded py-2 px-4 {menuIsActive ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400\\\"       add=\\\"rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black\\\"       on:click=\\\"{handleMenuBtnAction}\\\"       data-toggle=\\\"collapse\\\"       data-target=\\\"#navbarNav\\\"       aria-controls=\\\"navbarNav\\\"       aria-expanded=\\\"false\\\"       aria-label=\\\"Toggle navigation\\\"       id=\\\"btnMenu\\\"     >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (94:14) {#if object[0] === list.icon}
+    // (100:14) {#if object[0] === list.icon}
     function create_if_block$6(ctx) {
     	let current;
 
     	const icon = new Icon$1({
-    			props: { data: /*icon*/ ctx[18], scale: "1.5" },
+    			props: { data: /*icon*/ ctx[19], scale: "1.5" },
     			$$inline: true
     		});
 
@@ -7505,18 +7505,18 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(94:14) {#if object[0] === list.icon}",
+    		source: "(100:14) {#if object[0] === list.icon}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:41) {#each Object.entries(icon) as object}
+    // (99:41) {#each Object.entries(icon) as object}
     function create_each_block_2(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*object*/ ctx[20][0] === /*list*/ ctx[15].icon && create_if_block$6(ctx);
+    	let if_block = /*object*/ ctx[21][0] === /*list*/ ctx[16].icon && create_if_block$6(ctx);
 
     	const block = {
     		c: function create() {
@@ -7529,7 +7529,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*object*/ ctx[20][0] === /*list*/ ctx[15].icon) {
+    			if (/*object*/ ctx[21][0] === /*list*/ ctx[16].icon) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
@@ -7571,18 +7571,18 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(93:41) {#each Object.entries(icon) as object}",
+    		source: "(99:41) {#each Object.entries(icon) as object}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:14) {#each iconTab as icon, i}
+    // (99:14) {#each iconTab as icon, i}
     function create_each_block_1$1(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_2 = Object.entries(/*icon*/ ctx[18]);
+    	let each_value_2 = Object.entries(/*icon*/ ctx[19]);
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -7611,8 +7611,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*iconTab, Object, navlists*/ 9) {
-    				each_value_2 = Object.entries(/*icon*/ ctx[18]);
+    			if (dirty & /*iconTab, Object, navlists*/ 17) {
+    				each_value_2 = Object.entries(/*icon*/ ctx[19]);
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -7667,18 +7667,18 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(93:14) {#each iconTab as icon, i}",
+    		source: "(99:14) {#each iconTab as icon, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:12) <div slot="activator">
+    // (98:12) <div slot="activator">
     function create_activator_slot_1(ctx) {
     	let div;
     	let current;
-    	let each_value_1 = /*iconTab*/ ctx[3];
+    	let each_value_1 = /*iconTab*/ ctx[4];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -7699,7 +7699,7 @@ var app = (function () {
     			}
 
     			attr_dev(div, "slot", "activator");
-    			add_location(div, file$e, 91, 12, 3161);
+    			add_location(div, file$e, 97, 12, 3401);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7711,8 +7711,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*Object, iconTab, navlists*/ 9) {
-    				each_value_1 = /*iconTab*/ ctx[3];
+    			if (dirty & /*Object, iconTab, navlists*/ 17) {
+    				each_value_1 = /*iconTab*/ ctx[4];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -7767,17 +7767,17 @@ var app = (function () {
     		block,
     		id: create_activator_slot_1.name,
     		type: "slot",
-    		source: "(92:12) <div slot=\\\"activator\\\">",
+    		source: "(98:12) <div slot=\\\"activator\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:10) <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
+    // (97:10) <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
     function create_default_slot_2(ctx) {
     	let t0;
-    	let t1_value = /*list*/ ctx[15].label + "";
+    	let t1_value = /*list*/ ctx[16].label + "";
     	let t1;
 
     	const block = {
@@ -7790,7 +7790,7 @@ var app = (function () {
     			insert_dev(target, t1, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if ( t1_value !== (t1_value = /*list*/ ctx[15].label + "")) set_data_dev(t1, t1_value);
+    			if ( t1_value !== (t1_value = /*list*/ ctx[16].label + "")) set_data_dev(t1, t1_value);
     		},
     		i: noop,
     		o: noop,
@@ -7804,20 +7804,21 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(91:10) <Tooltip class=\\\"capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5\\\">",
+    		source: "(97:10) <Tooltip class=\\\"capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (85:6) {#each navlists as list, i}
+    // (91:6) {#each navlists as list, i}
     function create_each_block$1(ctx) {
     	let li;
     	let a;
     	let a_href_value;
     	let t;
     	let current;
+    	let dispose;
 
     	const tooltip = new Tooltip({
     			props: {
@@ -7838,28 +7839,45 @@ var app = (function () {
     			create_component(tooltip.$$.fragment);
     			t = space();
     			attr_dev(a, "class", "nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black svelte-1qfdnen");
-    			attr_dev(a, "href", a_href_value = /*list*/ ctx[15].url);
-    			add_location(a, file$e, 86, 8, 2877);
+    			attr_dev(a, "href", a_href_value = /*list*/ ctx[16].url);
+    			add_location(a, file$e, 92, 8, 3062);
     			attr_dev(li, "class", "nav-item mr-3 absolute lg:relative bg-custom rounded-full w-12 h-12 top-0 left-0 svelte-1qfdnen");
-    			add_location(li, file$e, 85, 6, 2775);
+    			add_location(li, file$e, 91, 6, 2960);
     		},
-    		m: function mount(target, anchor) {
+    		m: function mount(target, anchor, remount) {
     			insert_dev(target, li, anchor);
     			append_dev(li, a);
     			mount_component(tooltip, a, null);
     			append_dev(li, t);
     			current = true;
+    			if (remount) dispose();
+
+    			dispose = listen_dev(
+    				a,
+    				"click",
+    				function () {
+    					if (is_function(/*MenuBtnpressed*/ ctx[3]
+    					? /*handleMenuBtnAction*/ ctx[8]
+    					: "")) (/*MenuBtnpressed*/ ctx[3]
+    					? /*handleMenuBtnAction*/ ctx[8]
+    					: "").apply(this, arguments);
+    				},
+    				false,
+    				false,
+    				false
+    			);
     		},
-    		p: function update(ctx, dirty) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
     			const tooltip_changes = {};
 
-    			if (dirty & /*$$scope, navlists*/ 8388609) {
+    			if (dirty & /*$$scope, navlists*/ 16777217) {
     				tooltip_changes.$$scope = { dirty, ctx };
     			}
 
     			tooltip.$set(tooltip_changes);
 
-    			if (!current || dirty & /*navlists*/ 1 && a_href_value !== (a_href_value = /*list*/ ctx[15].url)) {
+    			if (!current || dirty & /*navlists*/ 1 && a_href_value !== (a_href_value = /*list*/ ctx[16].url)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -7875,6 +7893,7 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
     			destroy_component(tooltip);
+    			dispose();
     		}
     	};
 
@@ -7882,14 +7901,14 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(85:6) {#each navlists as list, i}",
+    		source: "(91:6) {#each navlists as list, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (107:10) <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full relative text-black" bind:value={darkMode} flat>
+    // (113:10) <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full relative text-black" bind:value={darkMode} flat>
     function create_default_slot_1$2(ctx) {
     	let current;
 
@@ -7898,8 +7917,8 @@ var app = (function () {
     				data: adjust,
     				scale: "1.5",
     				label: /*darkMode*/ ctx[1]
-    				? /*TEXTLIGHT*/ ctx[6]
-    				: /*TEXTDARK*/ ctx[5]
+    				? /*TEXTLIGHT*/ ctx[7]
+    				: /*TEXTDARK*/ ctx[6]
     			},
     			$$inline: true
     		});
@@ -7916,8 +7935,8 @@ var app = (function () {
     			const icon_changes = {};
 
     			if (dirty & /*darkMode*/ 2) icon_changes.label = /*darkMode*/ ctx[1]
-    			? /*TEXTLIGHT*/ ctx[6]
-    			: /*TEXTDARK*/ ctx[5];
+    			? /*TEXTLIGHT*/ ctx[7]
+    			: /*TEXTDARK*/ ctx[6];
 
     			icon.$set(icon_changes);
     		},
@@ -7939,14 +7958,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$2.name,
     		type: "slot",
-    		source: "(107:10) <Button class=\\\"px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full relative text-black\\\" bind:value={darkMode} flat>",
+    		source: "(113:10) <Button class=\\\"px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full relative text-black\\\" bind:value={darkMode} flat>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (106:8) <div slot="activator" on:click="{toggleThemeChange}">
+    // (112:8) <div slot="activator" on:click="{toggleThemeChange}">
     function create_activator_slot(ctx) {
     	let div;
     	let updating_value;
@@ -7954,7 +7973,7 @@ var app = (function () {
     	let dispose;
 
     	function button_value_binding(value) {
-    		/*button_value_binding*/ ctx[14].call(null, value);
+    		/*button_value_binding*/ ctx[15].call(null, value);
     	}
 
     	let button_props = {
@@ -7976,19 +7995,19 @@ var app = (function () {
     			div = element("div");
     			create_component(button.$$.fragment);
     			attr_dev(div, "slot", "activator");
-    			add_location(div, file$e, 105, 8, 3705);
+    			add_location(div, file$e, 111, 8, 3945);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
     			mount_component(button, div, null);
     			current = true;
     			if (remount) dispose();
-    			dispose = listen_dev(div, "click", /*toggleThemeChange*/ ctx[4], false, false, false);
+    			dispose = listen_dev(div, "click", /*toggleThemeChange*/ ctx[5], false, false, false);
     		},
     		p: function update(ctx, dirty) {
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, darkMode*/ 8388610) {
+    			if (dirty & /*$$scope, darkMode*/ 16777218) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -8020,20 +8039,20 @@ var app = (function () {
     		block,
     		id: create_activator_slot.name,
     		type: "slot",
-    		source: "(106:8) <div slot=\\\"activator\\\" on:click=\\\"{toggleThemeChange}\\\">",
+    		source: "(112:8) <div slot=\\\"activator\\\" on:click=\\\"{toggleThemeChange}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:6) <Tooltip class="capitalize bg-dark-200 bg-opacity-75">
+    // (111:6) <Tooltip class="capitalize bg-dark-200 bg-opacity-75">
     function create_default_slot$5(ctx) {
     	let t0;
 
     	let t1_value = (/*darkMode*/ ctx[1]
-    	? /*TEXTLIGHT*/ ctx[6]
-    	: /*TEXTDARK*/ ctx[5]) + "";
+    	? /*TEXTLIGHT*/ ctx[7]
+    	: /*TEXTDARK*/ ctx[6]) + "";
 
     	let t1;
 
@@ -8048,8 +8067,8 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if ( t1_value !== (t1_value = (/*darkMode*/ ctx[1]
-    			? /*TEXTLIGHT*/ ctx[6]
-    			: /*TEXTDARK*/ ctx[5]) + "")) set_data_dev(t1, t1_value);
+    			? /*TEXTLIGHT*/ ctx[7]
+    			: /*TEXTDARK*/ ctx[6]) + "")) set_data_dev(t1, t1_value);
     		},
     		i: noop,
     		o: noop,
@@ -8063,7 +8082,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$5.name,
     		type: "slot",
-    		source: "(105:6) <Tooltip class=\\\"capitalize bg-dark-200 bg-opacity-75\\\">",
+    		source: "(111:6) <Tooltip class=\\\"capitalize bg-dark-200 bg-opacity-75\\\">",
     		ctx
     	});
 
@@ -8097,7 +8116,7 @@ var app = (function () {
 
     	const button = new Button({
     			props: {
-    				remove: "rounded py-2 px-4 " + (/*active*/ ctx[2] ? "hover:elevation-5" : "") + " relative bg-primary-500 hover:bg-primary-400",
+    				remove: "rounded py-2 px-4 " + (/*menuIsActive*/ ctx[2] ? "hover:elevation-5" : "") + " relative bg-primary-500 hover:bg-primary-400",
     				add: "rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black",
     				"data-toggle": "collapse",
     				"data-target": "#navbarNav",
@@ -8111,7 +8130,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*click_handler*/ ctx[13]);
+    	button.$on("click", /*handleMenuBtnAction*/ ctx[8]);
     	let each_value = /*navlists*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -8167,67 +8186,67 @@ var app = (function () {
     			feColorMatrix2 = svg_element("feColorMatrix");
     			feComposite2 = svg_element("feComposite");
     			attr_dev(ul, "class", "nav list-reset lg:flex justify-end flex-1 items-center capitalize");
-    			add_location(ul, file$e, 81, 4, 2645);
+    			add_location(ul, file$e, 87, 4, 2830);
     			attr_dev(div0, "class", "switch-theme absolute lg:relative items-center text-center justify-center bg-custom rounded-full w-12 h-12 top-0 left-0 svelte-1qfdnen");
-    			add_location(div0, file$e, 103, 4, 3502);
+    			add_location(div0, file$e, 109, 4, 3742);
     			attr_dev(feGaussianBlur0, "in", "SourceGraphic");
     			attr_dev(feGaussianBlur0, "result", "blur");
     			attr_dev(feGaussianBlur0, "stdDeviation", "10");
-    			add_location(feGaussianBlur0, file$e, 118, 12, 4272);
+    			add_location(feGaussianBlur0, file$e, 124, 12, 4512);
     			attr_dev(feColorMatrix0, "in", "blur");
     			attr_dev(feColorMatrix0, "mode", "matrix");
     			attr_dev(feColorMatrix0, "values", "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7");
     			attr_dev(feColorMatrix0, "result", "goo");
-    			add_location(feColorMatrix0, file$e, 119, 12, 4369);
+    			add_location(feColorMatrix0, file$e, 125, 12, 4609);
     			attr_dev(feGaussianBlur1, "in", "goo");
     			attr_dev(feGaussianBlur1, "stdDeviation", "3");
     			attr_dev(feGaussianBlur1, "result", "shadow");
-    			add_location(feGaussianBlur1, file$e, 120, 12, 4504);
+    			add_location(feGaussianBlur1, file$e, 126, 12, 4744);
     			attr_dev(feColorMatrix1, "in", "shadow");
     			attr_dev(feColorMatrix1, "mode", "matrix");
     			attr_dev(feColorMatrix1, "values", "0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2");
     			attr_dev(feColorMatrix1, "result", "shadow");
-    			add_location(feColorMatrix1, file$e, 121, 12, 4592);
+    			add_location(feColorMatrix1, file$e, 127, 12, 4832);
     			attr_dev(feOffset, "in", "shadow");
     			attr_dev(feOffset, "dx", "1");
     			attr_dev(feOffset, "dy", "1");
     			attr_dev(feOffset, "result", "shadow");
-    			add_location(feOffset, file$e, 122, 12, 4733);
+    			add_location(feOffset, file$e, 128, 12, 4973);
     			attr_dev(feComposite0, "in2", "shadow");
     			attr_dev(feComposite0, "in", "goo");
     			attr_dev(feComposite0, "result", "goo");
-    			add_location(feComposite0, file$e, 123, 12, 4809);
+    			add_location(feComposite0, file$e, 129, 12, 5049);
     			attr_dev(feComposite1, "in2", "goo");
     			attr_dev(feComposite1, "in", "SourceGraphic");
     			attr_dev(feComposite1, "result", "mix");
-    			add_location(feComposite1, file$e, 124, 12, 4884);
+    			add_location(feComposite1, file$e, 130, 12, 5124);
     			attr_dev(filter0, "id", "shadowed-goo");
-    			add_location(filter0, file$e, 116, 8, 4220);
+    			add_location(filter0, file$e, 122, 8, 4460);
     			attr_dev(feGaussianBlur2, "in", "SourceGraphic");
     			attr_dev(feGaussianBlur2, "result", "blur");
     			attr_dev(feGaussianBlur2, "stdDeviation", "10");
-    			add_location(feGaussianBlur2, file$e, 127, 12, 5010);
+    			add_location(feGaussianBlur2, file$e, 133, 12, 5250);
     			attr_dev(feColorMatrix2, "in", "blur");
     			attr_dev(feColorMatrix2, "mode", "matrix");
     			attr_dev(feColorMatrix2, "values", "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7");
     			attr_dev(feColorMatrix2, "result", "goo");
-    			add_location(feColorMatrix2, file$e, 128, 12, 5107);
+    			add_location(feColorMatrix2, file$e, 134, 12, 5347);
     			attr_dev(feComposite2, "in2", "goo");
     			attr_dev(feComposite2, "in", "SourceGraphic");
     			attr_dev(feComposite2, "result", "mix");
-    			add_location(feComposite2, file$e, 129, 12, 5242);
+    			add_location(feComposite2, file$e, 135, 12, 5482);
     			attr_dev(filter1, "id", "goo");
-    			add_location(filter1, file$e, 126, 8, 4980);
-    			add_location(defs, file$e, 115, 6, 4205);
+    			add_location(filter1, file$e, 132, 8, 5220);
+    			add_location(defs, file$e, 121, 6, 4445);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "version", "1.1");
     			attr_dev(svg, "class", "lg:hidden");
-    			add_location(svg, file$e, 114, 4, 4126);
+    			add_location(svg, file$e, 120, 4, 4366);
     			attr_dev(div1, "class", "navbar-content w-12 h-12 lg:w-auto lg:w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block lg:mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 z-20");
     			attr_dev(div1, "id", "navbarNav");
-    			add_location(div1, file$e, 55, 2, 1630);
-    			attr_dev(nav, "class", nav_class_value = "navbar " + (/*active*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-1qfdnen");
-    			add_location(nav, file$e, 52, 0, 1498);
+    			add_location(div1, file$e, 61, 2, 1828);
+    			attr_dev(nav, "class", nav_class_value = "navbar " + (/*menuIsActive*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-1qfdnen");
+    			add_location(nav, file$e, 58, 0, 1690);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -8265,15 +8284,15 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			const button_changes = {};
-    			if (dirty & /*active*/ 4) button_changes.remove = "rounded py-2 px-4 " + (/*active*/ ctx[2] ? "hover:elevation-5" : "") + " relative bg-primary-500 hover:bg-primary-400";
+    			if (dirty & /*menuIsActive*/ 4) button_changes.remove = "rounded py-2 px-4 " + (/*menuIsActive*/ ctx[2] ? "hover:elevation-5" : "") + " relative bg-primary-500 hover:bg-primary-400";
 
-    			if (dirty & /*$$scope*/ 8388608) {
+    			if (dirty & /*$$scope*/ 16777216) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
     			button.$set(button_changes);
 
-    			if (dirty & /*navlists, iconTab, Object*/ 9) {
+    			if (dirty & /*navlists, MenuBtnpressed, handleMenuBtnAction, iconTab, Object*/ 281) {
     				each_value = /*navlists*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -8303,13 +8322,13 @@ var app = (function () {
 
     			const tooltip_changes = {};
 
-    			if (dirty & /*$$scope, darkMode*/ 8388610) {
+    			if (dirty & /*$$scope, darkMode*/ 16777218) {
     				tooltip_changes.$$scope = { dirty, ctx };
     			}
 
     			tooltip.$set(tooltip_changes);
 
-    			if (!current || dirty & /*active*/ 4 && nav_class_value !== (nav_class_value = "navbar " + (/*active*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-1qfdnen")) {
+    			if (!current || dirty & /*menuIsActive*/ 4 && nav_class_value !== (nav_class_value = "navbar " + (/*menuIsActive*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-1qfdnen")) {
     				attr_dev(nav, "class", nav_class_value);
     			}
     		},
@@ -8368,7 +8387,7 @@ var app = (function () {
     	? window.document.body.classList.add(DARKMODECLASSNAME)
     	: window.document.body.classList.remove(DARKMODECLASSNAME);
 
-    	function toggleThemeChange() {
+    	let toggleThemeChange = () => {
     		if (darkMode === true) {
     			// Update localstorage
     			localStorage.setItem(LOCALSTORAGEITEM, DARKMODECLASSNAME);
@@ -8380,16 +8399,23 @@ var app = (function () {
 
     			window.document.body.classList.remove(DARKMODECLASSNAME);
     		}
-    	}
+    	};
 
     	let { navlists = [] } = $$props;
     	let { switchBtn = {} } = $$props;
     	const { TEXTDARK, TEXTLIGHT } = switchBtn;
-    	let active = false;
+    	let menuIsActive = false;
+    	let MenuBtnpressed = false;
 
-    	function handleMenu() {
-    		dispatch("message", { toggleMenuBtnClick: active });
-    	}
+    	let handleMenuDispatch = () => {
+    		dispatch("message", { toggleMenuBtnClick: menuIsActive });
+    	};
+
+    	let handleMenuBtnAction = () => {
+    		$$invalidate(2, menuIsActive = !menuIsActive);
+    		$$invalidate(3, MenuBtnpressed = !MenuBtnpressed);
+    		handleMenuDispatch();
+    	};
 
     	const writable_props = ["navlists", "switchBtn"];
 
@@ -8400,11 +8426,6 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("Navbar", $$slots, []);
 
-    	const click_handler = () => {
-    		$$invalidate(2, active = !active);
-    		handleMenu();
-    	};
-
     	function button_value_binding(value) {
     		darkMode = value;
     		$$invalidate(1, darkMode);
@@ -8412,7 +8433,7 @@ var app = (function () {
 
     	$$self.$set = $$props => {
     		if ("navlists" in $$props) $$invalidate(0, navlists = $$props.navlists);
-    		if ("switchBtn" in $$props) $$invalidate(8, switchBtn = $$props.switchBtn);
+    		if ("switchBtn" in $$props) $$invalidate(9, switchBtn = $$props.switchBtn);
     	};
 
     	$$self.$capture_state = () => ({
@@ -8441,15 +8462,21 @@ var app = (function () {
     		switchBtn,
     		TEXTDARK,
     		TEXTLIGHT,
-    		active,
-    		handleMenu
+    		menuIsActive,
+    		MenuBtnpressed,
+    		handleMenuDispatch,
+    		handleMenuBtnAction
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("darkMode" in $$props) $$invalidate(1, darkMode = $$props.darkMode);
+    		if ("toggleThemeChange" in $$props) $$invalidate(5, toggleThemeChange = $$props.toggleThemeChange);
     		if ("navlists" in $$props) $$invalidate(0, navlists = $$props.navlists);
-    		if ("switchBtn" in $$props) $$invalidate(8, switchBtn = $$props.switchBtn);
-    		if ("active" in $$props) $$invalidate(2, active = $$props.active);
+    		if ("switchBtn" in $$props) $$invalidate(9, switchBtn = $$props.switchBtn);
+    		if ("menuIsActive" in $$props) $$invalidate(2, menuIsActive = $$props.menuIsActive);
+    		if ("MenuBtnpressed" in $$props) $$invalidate(3, MenuBtnpressed = $$props.MenuBtnpressed);
+    		if ("handleMenuDispatch" in $$props) handleMenuDispatch = $$props.handleMenuDispatch;
+    		if ("handleMenuBtnAction" in $$props) $$invalidate(8, handleMenuBtnAction = $$props.handleMenuBtnAction);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -8459,18 +8486,19 @@ var app = (function () {
     	return [
     		navlists,
     		darkMode,
-    		active,
+    		menuIsActive,
+    		MenuBtnpressed,
     		iconTab,
     		toggleThemeChange,
     		TEXTDARK,
     		TEXTLIGHT,
-    		handleMenu,
+    		handleMenuBtnAction,
     		switchBtn,
     		DARKMODECLASSNAME,
     		LOCALSTORAGEITEM,
     		dispatch,
     		currentTheme,
-    		click_handler,
+    		handleMenuDispatch,
     		button_value_binding
     	];
     }
@@ -8478,7 +8506,7 @@ var app = (function () {
     class Navbar extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$f, create_fragment$f, safe_not_equal, { navlists: 0, switchBtn: 8 });
+    		init(this, options, instance$f, create_fragment$f, safe_not_equal, { navlists: 0, switchBtn: 9 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -11196,7 +11224,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	header_container.$on("message", /*handleMessage*/ ctx[1]);
+    	header_container.$on("message", /*handleMenuBtnAction*/ ctx[1]);
 
     	const home_container = new Home_container({
     			props: {
@@ -11228,13 +11256,13 @@ var app = (function () {
     			t1 = space();
     			footer = element("footer");
     			create_component(footer_container.$$.fragment);
-    			attr_dev(header, "class", "fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 svelte-1apl2k7");
+    			attr_dev(header, "class", "fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 svelte-wb0oa1");
     			attr_dev(header, "id", "header");
-    			add_location(header, file$q, 13, 0, 409);
-    			attr_dev(main, "class", main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7");
-    			add_location(main, file$q, 16, 0, 653);
-    			attr_dev(footer, "class", footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7");
-    			add_location(footer, file$q, 26, 0, 923);
+    			add_location(header, file$q, 13, 0, 416);
+    			attr_dev(main, "class", main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-wb0oa1");
+    			add_location(main, file$q, 16, 0, 666);
+    			attr_dev(footer, "class", footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-wb0oa1");
+    			add_location(footer, file$q, 26, 0, 936);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11251,11 +11279,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*menuIsActive*/ 1 && main_class_value !== (main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7")) {
+    			if (!current || dirty & /*menuIsActive*/ 1 && main_class_value !== (main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-wb0oa1")) {
     				attr_dev(main, "class", main_class_value);
     			}
 
-    			if (!current || dirty & /*menuIsActive*/ 1 && footer_class_value !== (footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-1apl2k7")) {
+    			if (!current || dirty & /*menuIsActive*/ 1 && footer_class_value !== (footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-wb0oa1")) {
     				attr_dev(footer, "class", footer_class_value);
     			}
     		},
@@ -11298,9 +11326,9 @@ var app = (function () {
     function instance$r($$self, $$props, $$invalidate) {
     	let menuIsActive;
 
-    	function handleMessage(event) {
+    	let handleMenuBtnAction = event => {
     		$$invalidate(0, menuIsActive = event.detail.toggleMenuBtnClick);
-    	}
+    	};
 
     	const writable_props = [];
 
@@ -11317,18 +11345,19 @@ var app = (function () {
     		Home_container,
     		Footer_container,
     		menuIsActive,
-    		handleMessage
+    		handleMenuBtnAction
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("menuIsActive" in $$props) $$invalidate(0, menuIsActive = $$props.menuIsActive);
+    		if ("handleMenuBtnAction" in $$props) $$invalidate(1, handleMenuBtnAction = $$props.handleMenuBtnAction);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [menuIsActive, handleMessage];
+    	return [menuIsActive, handleMenuBtnAction];
     }
 
     class App extends SvelteComponentDev {
