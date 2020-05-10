@@ -7424,9 +7424,9 @@ var app = (function () {
     			t = space();
     			div1 = element("div");
     			create_component(icon1.$$.fragment);
-    			attr_dev(div0, "class", "bars ease-in-out duration-300 delay-75 transition-all absolute svelte-1qfdnen");
+    			attr_dev(div0, "class", "bars ease-in-out duration-300 delay-75 transition-all absolute svelte-21w1fr");
     			add_location(div0, file$e, 76, 6, 2498);
-    			attr_dev(div1, "class", "cross ease-in-out duration-300 delay-75 transition-all absolute svelte-1qfdnen");
+    			attr_dev(div1, "class", "cross ease-in-out duration-300 delay-75 transition-all absolute svelte-21w1fr");
     			add_location(div1, file$e, 81, 6, 2657);
     		},
     		m: function mount(target, anchor) {
@@ -7838,10 +7838,10 @@ var app = (function () {
     			a = element("a");
     			create_component(tooltip.$$.fragment);
     			t = space();
-    			attr_dev(a, "class", "nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black svelte-1qfdnen");
+    			attr_dev(a, "class", "nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black svelte-21w1fr");
     			attr_dev(a, "href", a_href_value = /*list*/ ctx[16].url);
     			add_location(a, file$e, 92, 8, 3062);
-    			attr_dev(li, "class", "nav-item mr-3 absolute lg:relative bg-custom rounded-full w-12 h-12 top-0 left-0 svelte-1qfdnen");
+    			attr_dev(li, "class", "nav-item mr-3 absolute lg:relative bg-custom rounded-full w-12 h-12 top-0 left-0 svelte-21w1fr");
     			add_location(li, file$e, 91, 6, 2960);
     		},
     		m: function mount(target, anchor, remount) {
@@ -8187,7 +8187,7 @@ var app = (function () {
     			feComposite2 = svg_element("feComposite");
     			attr_dev(ul, "class", "nav list-reset lg:flex justify-end flex-1 items-center capitalize");
     			add_location(ul, file$e, 87, 4, 2830);
-    			attr_dev(div0, "class", "switch-theme absolute lg:relative items-center text-center justify-center bg-custom rounded-full w-12 h-12 top-0 left-0 svelte-1qfdnen");
+    			attr_dev(div0, "class", "switch-theme absolute lg:relative items-center text-center justify-center bg-custom rounded-full w-12 h-12 top-0 left-0 svelte-21w1fr");
     			add_location(div0, file$e, 109, 4, 3742);
     			attr_dev(feGaussianBlur0, "in", "SourceGraphic");
     			attr_dev(feGaussianBlur0, "result", "blur");
@@ -8245,7 +8245,7 @@ var app = (function () {
     			attr_dev(div1, "class", "navbar-content w-12 h-12 lg:w-auto lg:w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block lg:mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 z-20");
     			attr_dev(div1, "id", "navbarNav");
     			add_location(div1, file$e, 61, 2, 1828);
-    			attr_dev(nav, "class", nav_class_value = "navbar " + (/*menuIsActive*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-1qfdnen");
+    			attr_dev(nav, "class", nav_class_value = "navbar " + (/*menuIsActive*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-21w1fr");
     			add_location(nav, file$e, 58, 0, 1690);
     		},
     		l: function claim(nodes) {
@@ -8328,7 +8328,7 @@ var app = (function () {
 
     			tooltip.$set(tooltip_changes);
 
-    			if (!current || dirty & /*menuIsActive*/ 4 && nav_class_value !== (nav_class_value = "navbar " + (/*menuIsActive*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-1qfdnen")) {
+    			if (!current || dirty & /*menuIsActive*/ 4 && nav_class_value !== (nav_class_value = "navbar " + (/*menuIsActive*/ ctx[2] ? "navbar-active" : "w-12 h-12 ") + " lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2" + " svelte-21w1fr")) {
     				attr_dev(nav, "class", nav_class_value);
     			}
     		},
@@ -9697,7 +9697,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (16:6) <Chip selectable="{false}">
+    // (18:6) <Chip selectable="{false}">
     function create_default_slot$6(ctx) {
     	let t_value = /*list*/ ctx[3] + "";
     	let t;
@@ -9719,14 +9719,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$6.name,
     		type: "slot",
-    		source: "(16:6) <Chip selectable=\\\"{false}\\\">",
+    		source: "(18:6) <Chip selectable=\\\"{false}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (14:4) {#each LISTS as list, i}
+    // (16:4) {#each LISTS as list, i}
     function create_each_block$4(ctx) {
     	let li;
     	let t;
@@ -9746,8 +9746,8 @@ var app = (function () {
     			li = element("li");
     			create_component(chip.$$.fragment);
     			t = space();
-    			attr_dev(li, "class", "tools-item mt-2 inline-block mr-2");
-    			add_location(li, file$j, 14, 4, 380);
+    			attr_dev(li, "class", "tools-item mt-2 mr-2");
+    			add_location(li, file$j, 16, 4, 418);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -9783,7 +9783,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(14:4) {#each LISTS as list, i}",
+    		source: "(16:4) {#each LISTS as list, i}",
     		ctx
     	});
 
@@ -9822,7 +9822,7 @@ var app = (function () {
 
     			attr_dev(h1, "class", "tools-title w-full my-2 text-2xl font-bold leading-tight text-center text-gray-800 dark:text-gray-100 capitalize");
     			add_location(h1, file$j, 7, 2, 142);
-    			attr_dev(ul, "class", "tools-items-list list-reset mb-6 p-6");
+    			attr_dev(ul, "class", "tools-items-list list-reset mb-6 p-6 flex flex-wrap justify-between");
     			add_location(ul, file$j, 12, 2, 297);
     			attr_dev(div, "class", "tools");
     			add_location(div, file$j, 6, 0, 120);
@@ -10165,6 +10165,7 @@ var app = (function () {
     	let path1;
     	let path2;
     	let path3;
+    	let svg_class_value;
 
     	const block = {
     		c: function create() {
@@ -10180,7 +10181,7 @@ var app = (function () {
     			path3 = svg_element("path");
     			attr_dev(path0, "d", "M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z");
     			add_location(path0, file$l, 14, 8, 385);
-    			attr_dev(g0, "class", "wave-1");
+    			attr_dev(g0, "class", "wave-1 svelte-mryuca");
     			add_location(g0, file$l, 13, 6, 358);
     			attr_dev(path1, "d", "M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496");
     			attr_dev(path1, "opacity", "0.100000001");
@@ -10193,7 +10194,7 @@ var app = (function () {
     			add_location(path3, file$l, 30, 10, 1722);
     			attr_dev(g1, "transform", "translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ");
     			add_location(g1, file$l, 19, 8, 960);
-    			attr_dev(g2, "class", "wave-2");
+    			attr_dev(g2, "class", "wave-2 svelte-mryuca");
     			attr_dev(g2, "transform", "translate(1.000000, 15.000000)");
     			add_location(g2, file$l, 18, 6, 890);
     			attr_dev(g3, "transform", "translate(-1.000000, -14.000000)");
@@ -10204,7 +10205,7 @@ var app = (function () {
     			attr_dev(g4, "fill", "none");
     			attr_dev(g4, "fill-rule", "evenodd");
     			add_location(g4, file$l, 11, 2, 212);
-    			attr_dev(svg, "class", /*seperateBarClass*/ ctx[0]);
+    			attr_dev(svg, "class", svg_class_value = "" + (null_to_empty(/*seperateBarClass*/ ctx[0]) + " svelte-mryuca"));
     			attr_dev(svg, "viewBox", "0 0 1439 147");
     			attr_dev(svg, "version", "1.1");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
@@ -10227,8 +10228,8 @@ var app = (function () {
     			append_dev(g1, path3);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*seperateBarClass*/ 1) {
-    				attr_dev(svg, "class", /*seperateBarClass*/ ctx[0]);
+    			if (dirty & /*seperateBarClass*/ 1 && svg_class_value !== (svg_class_value = "" + (null_to_empty(/*seperateBarClass*/ ctx[0]) + " svelte-mryuca"))) {
+    				attr_dev(svg, "class", svg_class_value);
     			}
     		},
     		i: noop,
@@ -10618,11 +10619,11 @@ var app = (function () {
     			create_component(download.$$.fragment);
     			attr_dev(div0, "class", "flex flex-col w-full justify-center items-start text-center lg:text-left pb-4");
     			add_location(div0, file$n, 23, 8, 1216);
-    			attr_dev(div1, "class", "profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-5/6 lg:w-auto\t svelte-19i398h");
+    			attr_dev(div1, "class", "profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-5/6 lg:w-auto\t svelte-i7knwn");
     			add_location(div1, file$n, 21, 8, 950);
     			attr_dev(div2, "class", "container mx-auto flex flex-wrap flex-col lg:flex-row content-center");
     			add_location(div2, file$n, 20, 4, 859);
-    			attr_dev(section0, "class", "profil mx-auto flex flex-wrap flex-col lg:flex-row items-center bg-black svelte-19i398h");
+    			attr_dev(section0, "class", "profil mx-auto flex flex-wrap flex-col lg:flex-row items-center bg-black svelte-i7knwn");
     			add_location(section0, file$n, 19, 0, 764);
     			attr_dev(div3, "class", "container mx-auto pt-4 pb-6");
     			add_location(div3, file$n, 38, 4, 1716);
@@ -11203,6 +11204,8 @@ var app = (function () {
     }
 
     /* src/App.svelte generated by Svelte v3.21.0 */
+
+    const { console: console_1$1 } = globals;
     const file$q = "src/App.svelte";
 
     function create_fragment$r(ctx) {
@@ -11258,11 +11261,11 @@ var app = (function () {
     			create_component(footer_container.$$.fragment);
     			attr_dev(header, "class", "fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 svelte-wb0oa1");
     			attr_dev(header, "id", "header");
-    			add_location(header, file$q, 13, 0, 416);
+    			add_location(header, file$q, 14, 0, 492);
     			attr_dev(main, "class", main_class_value = "lg:pt-16 " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-wb0oa1");
-    			add_location(main, file$q, 16, 0, 666);
+    			add_location(main, file$q, 17, 0, 742);
     			attr_dev(footer, "class", footer_class_value = "bg-dark-transLight " + (/*menuIsActive*/ ctx[0] ? "blur-block" : "") + " svelte-wb0oa1");
-    			add_location(footer, file$q, 26, 0, 936);
+    			add_location(footer, file$q, 27, 0, 1012);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11330,10 +11333,11 @@ var app = (function () {
     		$$invalidate(0, menuIsActive = event.detail.toggleMenuBtnClick);
     	};
 
+    	console.log("/Users/cink/portfolio-2020", "/Users/cink/portfolio-2020");
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$1.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
