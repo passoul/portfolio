@@ -14,11 +14,7 @@
     {TITLE}
   </h1>
   <div class="mx-auto flex justify-center my-6 py-4 px-8">
-    <Button
-      href="{URL}"
-      remove="font-medium bg-primary-500 hover:bg-primary-400"
-      add="flex flex-wrap bg-custom text-black"
-    >
+    <Button href="{URL}" remove="font-medium" add="flex flex-wrap text-black">
       <Icon data="{download}" scale="1.2"></Icon>
       <div class="ml-2">
         {BTNTEXT}

@@ -6,6 +6,7 @@ import autoPreprocess from "svelte-preprocess";
 import { terser } from "rollup-plugin-terser";
 import babel from "rollup-plugin-babel";
 import smelte from "smelte/rollup-plugin-smelte";
+import replace from "@rollup/plugin-replace";
 
 // Const
 const production = !process.env.ROLLUP_WATCH;
@@ -19,11 +20,24 @@ export default {
     file: "public/static/js/bundle.js",
   },
   plugins: [
+    !production &&
+      replace({
+        FONTS: "/static/fonts",
+        MEDIA: "/static/media",
+        DOWNLOAD: "/static/download",
+        delimiters: ["<@", "@>"],
+      }),
+    production &&
+      replace({
+        FONTS: "/portfolio/static/fonts",
+        MEDIA: "/portfolio/static/media",
+        DOWNLOAD: "/portfolio/static/download",
+        delimiters: ["<@", "@>"],
+      }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
       // adding the preprocess into svelte loader
-      // preprocess,
       preprocess: autoPreprocess({ postcss: true }),
       emitCss: false,
       // we'll extract any component CSS out into
@@ -31,7 +45,6 @@ export default {
       css: (css) => {
         css.write("public/static/css/bundle.css");
       },
-      // css: true,
     }),
 
     // If you have external dependencies installed from
@@ -50,7 +63,17 @@ export default {
       postcss: [], // Your PostCSS plugins
       whitelist: [], // Array of classnames whitelisted from purging
       whitelistPatterns: [], // Same as above, but list of regexes
-      tailwind: [], // Any other props will be applied on top of default Smelte tailwind.config.js
+      tailwind: {
+        colors: {
+          primary: "#F5856D",
+          secondary: "#009688",
+          error: "#f44336",
+          success: "#4caf50",
+          alert: "#ff9800",
+          blue: "#2196f3",
+          dark: "#212121",
+        },
+      }, // Any other props will be applied on top of default Smelte tailwind.config.js
     }),
 
     // In dev mode, call `npm run start` once

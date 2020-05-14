@@ -11,7 +11,7 @@ const NAVBAR_DATA = [
 const PROFIL_DATA = {
   AVATAR: {
     alt: "ceci est ma photo",
-    src: "./static/media/avatar/avatar.png",
+    src: "<@MEDIA@>/avatar/avatar.png",
   },
   PROFESSION: "front end developer",
   FIRSTNAME: "pascal",
@@ -139,7 +139,7 @@ const TRUST_DATA = {
 const CV_DATA = {
   TITLE: "my cv",
   BTNTEXT: "download",
-  URL: "./static/download/Pascal-Soulier-Front-End.pdf",
+  URL: "<@DOWNLOAD@>/Pascal-Soulier-Front-End.pdf",
 };
 const SOCIAL_DATA = {
   LISTS: [

@@ -33,7 +33,7 @@
 </div>
 <style>
   
-:global(div[class*="cat-item-progressbar-"] div) {
+:global(div[class*="cat-item-progressbar"] div) {
     @apply rounded-full h-4 opacity-75;
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   }

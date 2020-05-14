@@ -8,5 +8,4 @@
 
 <div class="avatar {avatarClass}">
   <Image {alt} {src} class="rounded-full" width={widthHeight} height={widthHeight} />
-  <!-- <img {alt} {src} class="rounded-full" /> -->
 </div>

@@ -15,6 +15,8 @@
     export let toolsData;
     export let trustData;
     export let cvData;
+
+    const dir = window.location.hostname;
     
 </script>
 <section class="profil mx-auto flex flex-wrap flex-col lg:flex-row items-center bg-black">
@@ -60,7 +62,7 @@
 </section>
 <style>
     .profil {
-        background-image: url("/static/media/background/top-bg.jpg");
+        background-image: url("<@MEDIA@>/background/top-bg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;

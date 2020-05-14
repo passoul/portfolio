@@ -41,16 +41,19 @@
   .wave-top div[class*="wave-"] {
     @apply delay-150;
   }
-  :global(.wave-top .wave-1, .wave-top .wave-2, .wave-bottom .wave-2) {
+  .wave-top .wave-1,
+  .wave-top .wave-2,
+  .wave-bottom .wave-2 {
     fill: black;
   }
-  :global(.mode-dark .wave-top .wave-2, .mode-dark .wave-bottom .wave-2) {
+  .mode-dark .wave-top .wave-2,
+  .mode-dark .wave-bottom .wave-2 {
     fill: #ffffff;
   }
-  :global(.wave-bottom .wave-1) {
+  .wave-bottom .wave-1 {
     fill: #f5f5f5;
   }
-  :global(.mode-dark .wave-bottom .wave-1) {
+  .mode-dark .wave-bottom .wave-1 {
     fill: #424242;
   }
 </style>

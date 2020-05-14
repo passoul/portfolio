@@ -57,15 +57,15 @@
   };
 </script>
 <nav
-  class="navbar {menuIsActive ? 'navbar-active': 'w-12 h-12 '} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
+  class="navbar {menuIsActive ? 'navbar-active': 'w-12 h-12'} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
 >
   <div
     class="navbar-content w-12 h-12 lg:w-auto lg:w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block lg:mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 z-20"
     id="navbarNav"
   >
     <Button
-      remove="rounded py-2 px-4 {menuIsActive ? 'hover:elevation-5' : ''} relative bg-primary-500 hover:bg-primary-400"
-      add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 bg-custom hover:bg-white-transLight text-black"
+      remove="rounded py-2 px-4 {menuIsActive ? 'hover:elevation-5' : ''} relative"
+      add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 hover:bg-white-transLight text-black"
       on:click="{handleMenuBtnAction}"
       data-toggle="collapse"
       data-target="#navbarNav"
@@ -89,7 +89,7 @@
       class="nav list-reset lg:flex justify-end flex-1 items-center capitalize"
     >
       {#each navlists as list, i}
-      <li class="nav-item mr-3 absolute lg:relative bg-custom rounded-full w-12 h-12 top-0 left-0">
+      <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
         <a
           class="nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black"
           href="{list.url}" on:click="{MenuBtnpressed ? handleMenuBtnAction : ''}"
@@ -107,10 +107,10 @@
       {/each}
     </ul>
 
-    <div class="switch-theme absolute lg:relative items-center text-center justify-center bg-custom rounded-full w-12 h-12 top-0 left-0">
+    <div class="switch-theme absolute lg:relative items-center text-center justify-center bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
       <Tooltip class="capitalize bg-dark-200 bg-opacity-75">
         <div slot="activator" on:click="{toggleThemeChange}">
-          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full relative text-black" bind:value={darkMode} flat>
+          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center" bind:value={darkMode} flat>
             <Icon data="{adjust}" scale="1.5" label={darkMode ? TEXTLIGHT : TEXTDARK}></Icon>
           </Button>
         </div>
@@ -158,7 +158,7 @@
     transform: rotate(-90deg) scale(0);
     opacity: 0;
   }
-  :global(.switch-theme label) {
+  .switch-theme label {
     @apply sr-only;
   }
   .switch-theme{
@@ -173,7 +173,7 @@
     transition: transform ease-out 200ms;
     transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
   }
-  :global(.navbar-active button) {
+  .navbar-active button {
     -webkit-transition-timing-function: linear;
     transition-timing-function: linear;
     -webkit-transition-duration: 200ms;
@@ -216,7 +216,7 @@
     filter: url(#shadowed-goo);
   }
   @screen lg {
-    :global(.switch-theme button, .nav-item a){
+    .switch-theme button, .nav-item a{
       @apply text-black;
     }
     :global(.mode-dark .switch-theme button, .mode-dark .nav-item a){

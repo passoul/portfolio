@@ -10,9 +10,11 @@
   >
     {TITLE}
   </h1>
-  <ul class="tools-items-list list-reset mb-6 p-6">
+  <ul
+    class="tools-items-list list-reset mb-6 p-6 flex flex-wrap justify-between"
+  >
     {#each LISTS as list, i}
-    <li class="tools-item mt-2 inline-block mr-2">
+    <li class="tools-item mt-2 mr-2">
       <Chip selectable="{false}">{list}</Chip>
     </li>
     {/each}
