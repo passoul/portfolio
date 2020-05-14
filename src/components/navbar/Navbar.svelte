@@ -216,11 +216,11 @@
     filter: url(#shadowed-goo);
   }
   @screen lg {
-    .switch-theme button, .nav-item a{
-      @apply text-black;
+    :global(.switch-theme button svg, .nav-item svg){
+      fill: black;
     }
-    :global(.mode-dark .switch-theme button, .mode-dark .nav-item a){
-      @apply text-white
+    :global(.mode-dark .switch-theme button svg, .mode-dark .nav-item svg){
+      fill: white;
     }
     .nav-item, .switch-theme {
       @apply bg-transparent;
