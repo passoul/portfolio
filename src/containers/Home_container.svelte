@@ -66,7 +66,7 @@
         if (sectionsArray.length > 0) {
             sectionsArray.forEach(function(el, index){
 
-                if(el.elTop + ( viewPortHeight / 3 ) < viewPortHeight + y && !el.isVisible){
+                if(el.elTop + ( viewPortHeight / 2 ) < viewPortHeight + y && !el.isVisible){
                     animeSection(el);            
                 }    
             });
@@ -135,7 +135,7 @@ const animeSection = (element) => {
         background-repeat: no-repeat;
         background-position: center center;
         /* height: 478px; */
-        height: calc(100vh - 71px)
+        height: calc(100vh - 20vh);
     }
     .profil-box{
         @apply bg-opacity-75;
@@ -166,6 +166,11 @@ const animeSection = (element) => {
         100% {
             -webkit-transform: translateY(0);
                     transform: translateY(0);
+        }
+    }
+    @screen lg {
+        .profil{
+        height: calc(100vh - 25vh);
         }
     }
 </style>
