@@ -123,7 +123,6 @@
       {#each navlists as list, i}
       <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
         <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
-          <a href="">
           <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
             <div slot="activator">
               {#each iconTab as icon, i} {#each Object.entries(icon) as object}
@@ -132,7 +131,6 @@
             </div>
             {list.label}
           </Tooltip>
-        </a>
         </RouterLink>
       </li>
       {/each}
