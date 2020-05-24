@@ -32,10 +32,10 @@ export default {
       }),
     production &&
       replace({
-        HOME: "https://passoul.github.io/portfolio/",
-        FONTS: "https://passoul.github.io/portfolio/static/fonts",
-        MEDIA: "https://passoul.github.io/portfolio/static/media",
-        DOWNLOAD: "https://passoul.github.io/portfolio/static/download",
+        HOME: "https://portfolio.pascalsoulier.com/",
+        FONTS: "https://portfolio.pascalsoulier.com/static/fonts",
+        MEDIA: "https://portfolio.pascalsoulier.com/static/media",
+        DOWNLOAD: "https://portfolio.pascalsoulier.com/static/download",
         delimiters: ["<@", "@>"],
       }),
     svelte({

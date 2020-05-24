@@ -12,8 +12,8 @@
 </div>
 <style>
   :global(header .avatar){
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
   }
   :global(.avatar){
     width: 128px;

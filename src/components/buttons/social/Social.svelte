@@ -7,7 +7,7 @@
   const { LISTS } = socialData;
 </script>
 
-<div class="social {socialClass}">
+<div class="social {socialClass} text-center w-full">
   <ul class="social-list list-reset">
     {#each LISTS as { name, url, rel, target }, i}
     <li class="item inline-block mr-3">
