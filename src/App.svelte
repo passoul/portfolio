@@ -41,7 +41,7 @@
 <header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
 	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:BurgerBtnAction={handleMenuBtnAction} />
 </header>
-<main class="lg:pt-16" class:blur-block="{menuIsActive}">
+<main class:blur-block="{menuIsActive}">
 	<Home_container 
 	headingProfilData={DATA.PROFIL_DATA}
 	socialData={DATA.SOCIAL_DATA}
@@ -57,16 +57,16 @@
 <style>
 	@font-face{
 		font-family: 'Open Sans';
-  		src: url('<@FONTS@>/OpenSans-Regular.ttf') format('woff2');		
+  		src: url('<@FONTSDIR@>/OpenSans-Regular.ttf') format('woff2');		
 	}	
 	@font-face{
 		font-family: 'Open Sans';
-		  src: url('<@FONTS@>/OpenSans-SemiBold.ttf') format('woff2');		
+		  src: url('<@FONTSDIR@>/OpenSans-SemiBold.ttf') format('woff2');		
 		  font-weight: SemiBold;
 	}	
 	@font-face{
 		font-family: 'Montserrat';
-  		src: url('<@FONTS@>/Montserrat-Regular.ttf') format('woff2');		
+  		src: url('<@FONTSDIR@>/Montserrat-Regular.ttf') format('woff2');		
 	}
 	:global(html) {
 		font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -84,7 +84,7 @@
 		background: linear-gradient(to right, #434343, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 	.blur-block{
-		filter: blur(8px);
-		-webkit-filter: blur(8px);
+		filter: blur(2px);
+		-webkit-filter: blur(2px);
 	}
 </style>

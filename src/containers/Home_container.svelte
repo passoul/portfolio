@@ -66,7 +66,7 @@
         if (sectionsArray.length > 0) {
             sectionsArray.forEach(function(el, index){
 
-                if(el.elTop + ( viewPortHeight / 2 ) < viewPortHeight + y && !el.isVisible){
+                if(el.elTop + ( viewPortHeight / 3 ) < viewPortHeight + y && !el.isVisible){
                     animeSection(el);            
                 }    
             });
@@ -130,12 +130,22 @@ const animeSection = (element) => {
     {/each}
 <style>
     .profil {
-        background-image: url("<@MEDIA@>/background/top-bg.jpg");
+        background-image: url("<@IMGDIR@>/background/top-bg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
-        /* height: 478px; */
-        height: calc(100vh - 20vh);
+    }
+    :global(section) {
+        min-height: calc(100vh);
+    }
+    :global(section:first-of-type) {
+        min-height: calc(100vh - 127px);
+    }
+    :global(section:nth-of-type(4)) {
+        min-height: calc(100vh - 127px);
+    }
+    :global(section:last-of-type){
+        min-height: calc(100vh - 92px);
     }
     .profil-box{
         @apply bg-opacity-75;
@@ -169,8 +179,14 @@ const animeSection = (element) => {
         }
     }
     @screen lg {
-        .profil{
-        height: calc(100vh - 25vh);
+        :global(section) {
+            min-height: calc(100vh - 64px);
+        }
+        :global(section:nth-of-type(4)) {
+            min-height: calc(100vh - 191px);
+        }
+        :global(section:last-of-type){
+            min-height: calc(100vh - 156px);
         }
     }
 </style>

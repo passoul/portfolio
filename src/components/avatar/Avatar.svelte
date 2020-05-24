@@ -8,7 +8,7 @@
 </script>
 
 <div class="avatar {avatarClass}">
-  <Image {src} />
+  <Image src="static/images/avatar/avatar.png" {alt} />
 </div>
 <style>
   :global(header .avatar){

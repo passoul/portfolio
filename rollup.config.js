@@ -25,17 +25,17 @@ export default {
     !production &&
       replace({
         HOME: "http://localhost:5000/",
-        FONTS: "/static/fonts",
-        MEDIA: "/static/media",
-        DOWNLOAD: "/static/download",
+        FONTSDIR: "/static/fonts",
+        IMGDIR: "/static/images",
+        DOWNLOADDIR: "/static/download",
         delimiters: ["<@", "@>"],
       }),
     production &&
       replace({
         HOME: "https://portfolio.pascalsoulier.com/",
-        FONTS: "https://portfolio.pascalsoulier.com/static/fonts",
-        MEDIA: "https://portfolio.pascalsoulier.com/static/media",
-        DOWNLOAD: "https://portfolio.pascalsoulier.com/static/download",
+        FONTSDIR: "https://portfolio.pascalsoulier.com/static/fonts",
+        IMGDIR: "https://portfolio.pascalsoulier.com/static/images",
+        DOWNLOADDIR: "https://portfolio.pascalsoulier.com/static/download",
         delimiters: ["<@", "@>"],
       }),
     svelte({
@@ -45,7 +45,6 @@ export default {
       preprocess: [
         autoPreprocess({ postcss: true }),
         image({
-          outputDir: "images/",
           publicDir: "./public/",
           placeholder: "blur",
         }),
@@ -58,7 +57,7 @@ export default {
       },
     }),
     copy({
-      targets: [{ src: "src/static/images", dest: "public/static/media" }],
+      targets: [{ src: "src/static", dest: "public" }],
     }),
 
     // If you have external dependencies installed from
