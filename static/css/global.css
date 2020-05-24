@@ -950,6 +950,10 @@ img{
   margin-left:.5rem
 }
 
+.mt-3{
+  margin-top:.75rem
+}
+
 .mr-3{
   margin-right:.75rem
 }
@@ -960,10 +964,6 @@ img{
 
 .mb-4{
   margin-bottom:1rem
-}
-
-.mt-5{
-  margin-top:1.25rem
 }
 
 .mb-6{
@@ -1490,10 +1490,6 @@ html{
   .lg\:px-4{
     padding-left:1rem;
     padding-right:1rem
-  }
-
-  .lg\:pt-16{
-    padding-top:4rem
   }
 
   .lg\:relative{
