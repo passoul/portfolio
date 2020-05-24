@@ -1,33 +1,20 @@
 <script>
+  	import RouterLink from '@spaceavocado/svelte-router/component/link';
 	import Avatar from "../components/avatar/Avatar.svelte";
 	import Navbar from "../components/navbar/Navbar.svelte";
-	let y;
 
 	export let avatar;
 	export let navlists;
 	export let switchBtn;
-
-	$: (() => {
-		let scrollpos = window.scrollY;
-		let header = document.getElementById("header");
-		
-		if(y > 10){
-			header.classList.add("shadow");
-		}
-		if(y < 10){
-			header.classList.remove("shadow");
-		}
-	})();
 </script>
-<svelte:window  bind:scrollY={y}/>
 
 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
-	<div class="pl-4 lg:flex items-center">
-		<a href="/" class="px-2 md:px-8 flex items-center">
-		<Avatar avatar={avatar} avatarClass="hidden lg:block w-10 h-10" widthHeight="40"/>
+	<div class="pl-4 lg:flex hidden">
+		<a href="<@HOME@>" class="px-2 md:px-8 flex items-center">
+			<Avatar avatar={avatar} avatarClass="hidden lg:block w-10 h-10"/>
 		</a>
 	</div>
-	<Navbar {navlists} {switchBtn} on:message/>
+	<Navbar {navlists} {switchBtn} on:BurgerBtnAction/>
 </div>
 
 <style>

@@ -11,13 +11,7 @@
   <ul class="social-list list-reset">
     {#each LISTS as { name, url, rel, target }, i}
     <li class="item inline-block mr-3">
-      <a
-        href="{url}"
-        {rel}
-        {target}
-        data-name="{name}"
-        class="opacity-50 hover:opacity-100"
-      >
+      <a href="{url}" {rel} {target} data-name="{name}">
         {#if name === "twitter"}
         <Icon data="{twitter}" title="{name}" label="{name}" scale="1.2"></Icon>
         {/if} {#if name === "linkedin"}
@@ -34,8 +28,11 @@
   </ul>
 </div>
 <style>
-  .item a svg {
-    width: 5rem;
-    height: 5rem;
+  :global(.item a svg) {
+    @apply opacity-50;
+    @apply transition-all duration-200 ease-in-out;
+  }
+  :global(.item a:hover svg) {
+    @apply opacity-100;
   }
 </style>

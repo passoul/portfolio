@@ -1,4 +1,5 @@
 <script>
+  import RouterLink from '@spaceavocado/svelte-router/component/link';
   import { Switch, Tooltip, Button } from "smelte";
   import Icon from "svelte-awesome";
   import {
@@ -12,7 +13,8 @@
   } from "svelte-awesome/icons";
   import { fly } from "svelte/transition";
   import ENV_CONST from "../../constants/constants";
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
+
   // Toggle theme btn
   const { DARKMODECLASSNAME, LOCALSTORAGEITEM } = ENV_CONST;
   // IconTab
@@ -21,7 +23,16 @@
   const dispatch = createEventDispatcher();
   const currentTheme = localStorage.getItem(LOCALSTORAGEITEM);
   let darkMode = currentTheme === DARKMODECLASSNAME ? true : false;
+  // Props
+  export let navlists = [];
+  export let switchBtn = {};
+  const { TEXTDARK, TEXTLIGHT } = switchBtn;
 
+  let menuIsActive = false;
+  let MenuBtnpressed = false;
+  let last_id = window.location.hash.slice(1);
+
+  // Handle theme mode fonction
   currentTheme === DARKMODECLASSNAME
     ? window.document.body.classList.add(DARKMODECLASSNAME)
     : window.document.body.classList.remove(DARKMODECLASSNAME);
@@ -37,24 +48,45 @@
       window.document.body.classList.remove(DARKMODECLASSNAME);
     }
   }
-  // Props
-  export let navlists = [];
-  export let switchBtn = {};
-  const { TEXTDARK, TEXTLIGHT } = switchBtn;
-
-  let menuIsActive = false;
-  let MenuBtnpressed = false;
 
   let handleMenuDispatch = () => {
-    dispatch('message', {
+    dispatch('BurgerBtnAction', {
       toggleMenuBtnClick: menuIsActive
     });
   }
+
   let handleMenuBtnAction = () => {
     menuIsActive = !menuIsActive;  
     MenuBtnpressed = !MenuBtnpressed;
-    handleMenuDispatch()
+    handleMenuDispatch();
   };
+
+  // Scroll to section  
+  const handleOnCompleted = (hash, event) => {
+    let top; 
+
+    if(hash){
+      const element = document.querySelector("#" + hash);
+      top = element.offsetTop;
+      
+      if( !MenuBtnpressed ){
+        top = top - 64;          
+      }
+    }else{
+      top = 0;
+    }
+    
+    window.scrollTo({
+      top, // scroll so that the element is at the top of the view
+      behavior: 'smooth' // smooth scroll
+    });      
+
+    if(event == 'click' && MenuBtnpressed){ handleMenuBtnAction() }
+  }
+
+  onMount(() => {
+    setTimeout(function(){ handleOnCompleted(last_id, 'load') }, 1000);    
+  });
 </script>
 <nav
   class="navbar {menuIsActive ? 'navbar-active': 'w-12 h-12'} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
@@ -90,10 +122,7 @@
     >
       {#each navlists as list, i}
       <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
-        <a
-          class="nav-link inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black"
-          href="{list.url}" on:click="{MenuBtnpressed ? handleMenuBtnAction : ''}"
-        >
+        <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
           <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
             <div slot="activator">
               {#each iconTab as icon, i} {#each Object.entries(icon) as object}
@@ -102,13 +131,13 @@
             </div>
             {list.label}
           </Tooltip>
-        </a>
+        </RouterLink>
       </li>
       {/each}
     </ul>
 
     <div class="switch-theme absolute lg:relative items-center text-center justify-center bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
-      <Tooltip class="capitalize bg-dark-200 bg-opacity-75">
+      <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block">
         <div slot="activator" on:click="{toggleThemeChange}">
           <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center" bind:value={darkMode} flat>
             <Icon data="{adjust}" scale="1.5" label={darkMode ? TEXTLIGHT : TEXTDARK}></Icon>
@@ -136,7 +165,7 @@
             <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
         </filter>
       </defs>
-  </svg>
+    </svg>
 
   </div>
 </nav>
@@ -164,6 +193,9 @@
   .switch-theme{
     @apply cursor-pointer;
   }
+  :global(.nav-item a){
+    @apply inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black transition-all duration-200 ease-in-out;
+  }
   .nav-item,
   .switch-theme {
     -webkit-transform: translate3d(0, 0, 0);
@@ -182,28 +214,28 @@
     transform: scale(0.8, 0.8) translate3d(0, 0, 0);
   }
   .navbar-active .nav-item:nth-child(1) {
-    -webkit-transition-duration: 170ms;
-    transition-duration: 170ms;
-    -webkit-transform: translate3d(80px, 0, 0);
-    transform: translate3d(0, -48px, 0);
+    -webkit-transition-duration: 410ms;
+    transition-duration: 410ms;
+    -webkit-transform: translate3d(320px, 0, 0);
+    transform: translate3d(0, -192px, 0);
   }
   .navbar-active .nav-item:nth-child(2) {
-    -webkit-transition-duration: 250ms;
-    transition-duration: 250ms;
-    -webkit-transform: translate3d(160px, 0, 0);
-    transform: translate3d(0, -96px, 0);
-  }
-  .navbar-active .nav-item:nth-child(3) {
     -webkit-transition-duration: 330ms;
     transition-duration: 330ms;
     -webkit-transform: translate3d(240px, 0, 0);
     transform: translate3d(0, -144px, 0);
   }
+  .navbar-active .nav-item:nth-child(3) {
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+    -webkit-transform: translate3d(160px, 0, 0);
+    transform: translate3d(0, -96px, 0);
+  }
   .navbar-active .nav-item:nth-child(4) {
-    -webkit-transition-duration: 410ms;
-    transition-duration: 410ms;
-    -webkit-transform: translate3d(320px, 0, 0);
-    transform: translate3d(0, -192px, 0);
+    -webkit-transition-duration: 170ms;
+    transition-duration: 170ms;
+    -webkit-transform: translate3d(80px, 0, 0);
+    transform: translate3d(0, -48px, 0);
   }
   .navbar-active .switch-theme {
     -webkit-transition-duration: 410ms;
@@ -222,13 +254,13 @@
     :global(.mode-dark .switch-theme button svg, .mode-dark .nav-item svg){
       fill: white;
     }
-    .nav-item, .switch-theme {
+    .nav-item, :global(.switch-theme) {
       @apply bg-transparent;
     }
-    .nav-item a:hover, .switch-theme:hover {
+    :global(.nav-item a:hover, .switch-theme:hover) {
       @apply bg-black bg-opacity-25;
     }
-    .mode-dark .nav-item a:hover, .mode-dark .switch-theme:hover {      
+    :global(.mode-dark .nav-item a:hover, .mode-dark .switch-theme:hover) {      
       @apply bg-white bg-opacity-25;
     }
     .navbar{

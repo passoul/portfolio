@@ -3,21 +3,22 @@ const THEMESWITCH_DATA = {
   TEXTLIGHT: "go light",
 };
 const NAVBAR_DATA = [
-  { id: 1, url: "#skills", label: "skills", icon: "bar-chart" },
-  { id: 2, url: "#tools", label: "tools", icon: "wrench" },
-  { id: 3, url: "#trust", label: "trust", icon: "handshake-o" },
-  { id: 4, url: "#cv", label: "cv", icon: "file-pdf-o" },
+  { id: 1, label: "skills", icon: "bar-chart" },
+  { id: 2, label: "tools", icon: "wrench" },
+  { id: 3, label: "trust", icon: "handshake-o" },
+  { id: 4, label: "cv", icon: "file-pdf-o" },
 ];
 const PROFIL_DATA = {
   AVATAR: {
     alt: "ceci est ma photo",
-    src: "<@MEDIA@>/avatar/avatar.png",
+    src: "<@MEDIA@>/images/avatar.png",
   },
   PROFESSION: "front end developer",
   FIRSTNAME: "pascal",
   LASTNAME: "soulier",
 };
 const SKILLS_DATA = {
+  NAME: "skills",
   TITLE: "skills",
   LISTS: [
     {
@@ -77,6 +78,7 @@ const SKILLS_DATA = {
   ],
 };
 const TOOLS_DATA = {
+  NAME: "tools",
   TITLE: "tools",
   LISTS: [
     "git",
@@ -102,6 +104,7 @@ const TOOLS_DATA = {
   ],
 };
 const TRUST_DATA = {
+  NAME: "trust",
   TITLE: "they trusted me",
   COMPANIES: [
     {
@@ -137,6 +140,7 @@ const TRUST_DATA = {
   ],
 };
 const CV_DATA = {
+  NAME: "cv",
   TITLE: "my cv",
   BTNTEXT: "download",
   URL: "<@DOWNLOAD@>/Pascal-Soulier-Front-End.pdf",

@@ -1,36 +1,39 @@
 <script>
   import { ProgressLinear } from "smelte";
+  
   export let skillsData = {};
-  const { TITLE, LISTS } = skillsData;
+  const { NAME, TITLE, LISTS } = skillsData;
+
 </script>
 
-<div class="skills flex flex-wrap">
-  <h1
-    class="skills-title w-full my-2 text-2xl font-bold leading-tight text-center text-gray-800 capitalize dark:text-gray-100"
-  >
-    {TITLE}
-  </h1>
-  {#each LISTS as { cat_title, cat_items }, i}
-  <div class="cat-box w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-    <div class="cat-title w-full font-bold text-xl text-gray-800 px-6 capitalize mb-8 text-center dark:text-gray-100">
-      {cat_title}
+  <div class="skills-content flex flex-wrap">
+    <h1
+      class="skills-title w-full my-2 text-2xl font-bold leading-tight text-center text-gray-800 capitalize dark:text-gray-100"
+    >
+      {TITLE}
+    </h1>
+    {#each LISTS as { cat_title, cat_items }, i}
+    <div class="cat-box w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+      <div class="cat-title w-full font-bold text-xl text-gray-800 px-6 capitalize mb-8 text-center dark:text-gray-100">
+        {cat_title}
+      </div>
+      <ul class="cat_item-list">
+        {#each cat_items as { name, level }, i}
+        <li class="cat-item mb-6 flex items-center">
+          <div class="cat-item-title capitalize w-4/12">
+            {name} 
+              <small>({level}%)</small>
+          </div>
+          <div class="bg-gray-transDark rounded-full cat-item-progressbar-{name} w-8/12 h-4">
+            <ProgressLinear progress={level} />
+          </div>
+        </li>
+        {/each}
+      </ul>
     </div>
-    <ul class="cat_item-list">
-      {#each cat_items as { name, level }, i}
-      <li class="cat-item mb-6 flex items-center">
-        <div class="cat-item-title capitalize w-4/12">
-          {name} 
-            <small>({level}%)</small>
-        </div>
-        <div class="bg-gray-transDark rounded-full cat-item-progressbar-{name} w-8/12 h-4">
-          <ProgressLinear progress={level} />
-        </div>
-      </li>
-      {/each}
-    </ul>
+    {/each}
   </div>
-  {/each}
-</div>
+
 <style>
   
 :global(div[class*="cat-item-progressbar"] div) {

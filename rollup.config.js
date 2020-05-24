@@ -7,6 +7,8 @@ import { terser } from "rollup-plugin-terser";
 import babel from "rollup-plugin-babel";
 import smelte from "smelte/rollup-plugin-smelte";
 import replace from "@rollup/plugin-replace";
+import image from "svelte-image";
+import copy from "rollup-plugin-copy";
 
 // Const
 const production = !process.env.ROLLUP_WATCH;
@@ -22,6 +24,7 @@ export default {
   plugins: [
     !production &&
       replace({
+        HOME: "http://localhost:5000/",
         FONTS: "/static/fonts",
         MEDIA: "/static/media",
         DOWNLOAD: "/static/download",
@@ -29,22 +32,33 @@ export default {
       }),
     production &&
       replace({
-        FONTS: "/portfolio/static/fonts",
-        MEDIA: "/portfolio/static/media",
-        DOWNLOAD: "/portfolio/static/download",
+        HOME: "https://passoul.github.io/portfolio/",
+        FONTS: "https://passoul.github.io/portfolio/static/fonts",
+        MEDIA: "https://passoul.github.io/portfolio/static/media",
+        DOWNLOAD: "https://passoul.github.io/portfolio/static/download",
         delimiters: ["<@", "@>"],
       }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
       // adding the preprocess into svelte loader
-      preprocess: autoPreprocess({ postcss: true }),
+      preprocess: [
+        autoPreprocess({ postcss: true }),
+        image({
+          outputDir: "images/",
+          publicDir: "./public/",
+          placeholder: "blur",
+        }),
+      ],
       emitCss: false,
       // we'll extract any component CSS out into
       // a separate file - better for performance
       css: (css) => {
         css.write("public/static/css/bundle.css");
       },
+    }),
+    copy({
+      targets: [{ src: "src/static/images", dest: "public/static/media" }],
     }),
 
     // If you have external dependencies installed from

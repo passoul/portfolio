@@ -1,11 +1,25 @@
 <script>
-  import { Image } from "smelte";
+  import Image from "svelte-image";
+
   export let avatar = {};
   export let avatarClass;
-  export let widthHeight;
+
   const { alt, src } = avatar;
 </script>
 
 <div class="avatar {avatarClass}">
-  <Image {alt} {src} class="rounded-full" width={widthHeight} height={widthHeight} />
+  <Image {src} />
 </div>
+<style>
+  :global(header .avatar){
+    width: 40px;
+    height: 40px;
+  }
+  :global(.avatar){
+    width: 128px;
+    height: 128px;
+  }
+  :global(.avatar img){
+    @apply rounded-full;
+  }
+</style>

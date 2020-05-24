@@ -1,21 +1,45 @@
 <script>
+	import ENV_CONST from "./constants/constants";
+	import createRouter from '@spaceavocado/svelte-router';
+	import RouterView from '@spaceavocado/svelte-router/component/view';
     import DATA  from "./constants/data";
 	import Header_container from "./containers/Header_container.svelte";
 	import Home_container from "./containers/Home_container.svelte";
 	import Footer_container from "./containers/Footer_container.svelte";
 
-	import ENV_CONST from "./constants/constants";
-
-	// import "smelte/src/tailwind.css";
+	import "smelte/src/tailwind.css";
 
 	let menuIsActive;
 
 	let handleMenuBtnAction = (event) => {
 		menuIsActive = event.detail.toggleMenuBtnClick;
 	}
+	let y;
+
+	createRouter({
+		routes: [{ 
+			path: '/',
+			name: 'HOME',
+			component: Home_container
+			}],
+	});
+
+	$: (() => {
+		let scrollpos = window.scrollY;
+		let header = document.getElementById("header");
+		
+		if(y > 10){
+			header.classList.add("shadow");
+		}
+		if(y < 10){
+			header.classList.remove("shadow");
+		}
+	})();
+
 </script>
+<svelte:window bind:scrollY={y}/>
 <header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
-	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:message={handleMenuBtnAction} />
+	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:BurgerBtnAction={handleMenuBtnAction} />
 </header>
 <main class="lg:pt-16" class:blur-block="{menuIsActive}">
 	<Home_container 

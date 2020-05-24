@@ -4,10 +4,10 @@
   import { download } from "svelte-awesome/icons";
 
   export let cvData = {};
-  const { TITLE, BTNTEXT, URL } = cvData;
+  const { NAME, TITLE, BTNTEXT, URL } = cvData;
 </script>
 
-<div class="download-cv">
+<div class="cv-content">
   <h1
     class=" w-full my-2 text-2xl font-bold leading-tight text-center text-gray-800 capitalize dark:text-gray-100"
   >
