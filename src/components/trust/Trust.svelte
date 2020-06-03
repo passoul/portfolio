@@ -1,6 +1,7 @@
 <script>
-  export let trustData = {};
-  const { NAME, TITLE, COMPANIES } = trustData;
+  import { TRUST_DATA } from "../../store/data";
+
+  const { NAME, TITLE, COMPANIES } = $TRUST_DATA;
 </script>
 
 <div class="trust-content flex flex-wrap pb-12">
@@ -10,7 +11,7 @@
     {TITLE}
   </div>
   <ul
-    class="companies-list p-6 flex justify-around flex-col sm:flex-row flex-wrap w-full items-center bg-white-transDark rounded mt-4"
+    class="companies-list p-6 flex justify-around flex-col sm:flex-row flex-wrap w-full items-center rounded mt-4"
   >
     {#each COMPANIES as { name, logo, svg }, i}
     <li class="item my-6">

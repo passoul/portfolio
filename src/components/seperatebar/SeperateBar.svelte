@@ -45,12 +45,12 @@
     fill: black;
   }
   :global(.mode-dark .wave-top .wave-2, .mode-dark .wave-bottom .wave-2) {
-    fill: white;
+    fill: gray;
   }
   :global(.wave-bottom .wave-1) {
-    fill: #f5f5f5;
+    fill: rgba(255, 255, 255, 0.2);
   }
   :global(.mode-dark .wave-bottom .wave-1) {
-    fill: #424242;
+    fill: rgba(255, 255, 255, 0.2);
   }
 </style>

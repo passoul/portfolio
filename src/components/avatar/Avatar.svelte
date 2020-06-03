@@ -1,10 +1,10 @@
 <script>
   import Image from "svelte-image";
+  import { PROFIL_DATA } from "../../store/data.js";
 
-  export let avatar = {};
   export let avatarClass;
 
-  const { alt, src } = avatar;
+  const { alt, src } = $PROFIL_DATA.AVATAR;
 </script>
 
 <div class="avatar {avatarClass}">

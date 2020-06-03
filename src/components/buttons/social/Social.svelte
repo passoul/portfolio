@@ -1,10 +1,11 @@
 <script>
   import Icon from "svelte-awesome";
   import { linkedinSquare, twitter } from "svelte-awesome/icons";
+  import { SOCIAL_DATA } from "../../../store/data";
 
-  export let socialData = {};
   export let socialClass;
-  const { LISTS } = socialData;
+
+  const { LISTS } = $SOCIAL_DATA;
 </script>
 
 <div class="social {socialClass} text-center w-full">

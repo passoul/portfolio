@@ -1,20 +1,19 @@
 <script>
-	import ENV_CONST from "./constants/constants";
+    import { onMount, setContext } from "svelte";
+	import { fade } from "svelte/transition";
+	import { HEADERID, SHADOWCLASSES } from "./store/constant";
+	import { SHOWHEADER, HEADERINTROEND, MENUISACTIVE } from "./store/states";
 	import createRouter from '@spaceavocado/svelte-router';
 	import RouterView from '@spaceavocado/svelte-router/component/view';
-    import DATA  from "./constants/data";
 	import Header_container from "./containers/Header_container.svelte";
 	import Home_container from "./containers/Home_container.svelte";
 	import Footer_container from "./containers/Footer_container.svelte";
 
 	import "smelte/src/tailwind.css";
 
-	let menuIsActive;
-
-	let handleMenuBtnAction = (event) => {
-		menuIsActive = event.detail.toggleMenuBtnClick;
-	}
 	let y;
+    let sections;
+    let sectionsArray = [];
 
 	createRouter({
 		routes: [{ 
@@ -24,35 +23,54 @@
 			}],
 	});
 
+	onMount( async () => {
+	
+		await fetch('<@HOME@>').then(() => {
+
+			sections = document.querySelectorAll('section[class*="-section"]');
+
+			setTimeout(() => {
+				sections.forEach(function(section, index){
+					sectionsArray.push({
+						el: section,
+						elTop: section.offsetTop,
+						isVisible: false                
+					});         
+				})
+				}, 1000);
+				
+				
+			})
+			
+	});
+	setContext('sections', sectionsArray);
+
 	$: (() => {
-		let scrollpos = window.scrollY;
-		let header = document.getElementById("header");
-		
-		if(y > 10){
-			header.classList.add("shadow");
-		}
-		if(y < 10){
-			header.classList.remove("shadow");
+		// If header visible
+		if($HEADERINTROEND){
+			const header = document.getElementById(HEADERID);
+			
+			if(y > 10){
+				header.classList.add(SHADOWCLASSES);
+			}else{
+				header.classList.remove(SHADOWCLASSES);
+			}
 		}
 	})();
-
+	// Show header
+	setTimeout(() => { SHOWHEADER.set(true) }, 1000);
 </script>
 <svelte:window bind:scrollY={y}/>
-<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header">
-	<Header_container navlists={DATA.NAVBAR_DATA} switchBtn={DATA.THEMESWITCH_DATA} avatar={DATA.PROFIL_DATA.AVATAR} on:BurgerBtnAction={handleMenuBtnAction} />
+{#if $SHOWHEADER}
+<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header" transition:fade on:introend="{() => HEADERINTROEND.set(true)}">
+	<Header_container />
 </header>
-<main class:blur-block="{menuIsActive}">
-	<Home_container 
-	headingProfilData={DATA.PROFIL_DATA}
-	socialData={DATA.SOCIAL_DATA}
-	skillsData={DATA.SKILLS_DATA}
-	toolsData={DATA.TOOLS_DATA}
-	trustData={DATA.TRUST_DATA}
-	cvData={DATA.CV_DATA}
-	/>
+{/if}
+<main class:blur-block="{$MENUISACTIVE}">
+	<Home_container	/>
 </main>
-<footer class="bg-dark-transLight" class:blur-block="{menuIsActive}">
-	<Footer_container copyrightData={DATA.COPYRIGHT_DATA} socialData={DATA.SOCIAL_DATA}/>
+<footer class="bg-dark-transLight" class:blur-block="{$MENUISACTIVE}">
+	<Footer_container />
 </footer>
 <style>
 	@font-face{

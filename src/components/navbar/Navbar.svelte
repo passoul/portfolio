@@ -1,7 +1,9 @@
 <script>
   import RouterLink from '@spaceavocado/svelte-router/component/link';
+  import { onMount, getContext } from 'svelte';
   import { Switch, Tooltip, Button } from "smelte";
   import Icon from "svelte-awesome";
+  import { elasticOut } from "svelte/easing";
   import {
     bars,
     times,
@@ -11,26 +13,22 @@
     filePdfO,
     wrench,
   } from "svelte-awesome/icons";
-  import { fly } from "svelte/transition";
-  import ENV_CONST from "../../constants/constants";
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { DARKMODECLASSNAME, LOCALSTORAGEITEM, SLIDETOP, MENUITEMANIMDURATION, MENUITEMANIMDELAY, SCREENLG } from "../../store/constant";
+  import { NAVBAR_DATA, THEMESWITCH_DATA	} from "../../store/data";
+  import { MENUISACTIVE, MENUBTNPRESSED, DARKMODE, HEADERINTROEND, SHOWMENUEITEM	} from "../../store/states";
+  import BackToTop from '../buttons/backtotop/BackToTop.svelte';
 
-  // Toggle theme btn
-  const { DARKMODECLASSNAME, LOCALSTORAGEITEM } = ENV_CONST;
   // IconTab
   const iconTab = [barChart, handshakeO, filePdfO, wrench];
 
-  const dispatch = createEventDispatcher();
   const currentTheme = localStorage.getItem(LOCALSTORAGEITEM);
-  let darkMode = currentTheme === DARKMODECLASSNAME ? true : false;
-  // Props
-  export let navlists = [];
-  export let switchBtn = {};
-  const { TEXTDARK, TEXTLIGHT } = switchBtn;
+  
+  const { TEXTDARK, TEXTLIGHT } = $THEMESWITCH_DATA;
+  
+  DARKMODE.set(currentTheme === DARKMODECLASSNAME ? true : false);
 
-  let menuIsActive = false;
-  let MenuBtnpressed = false;
   let last_id = window.location.hash.slice(1);
+  const menuItemLenght = $NAVBAR_DATA.length;
 
   // Handle theme mode fonction
   currentTheme === DARKMODECLASSNAME
@@ -38,7 +36,7 @@
     : window.document.body.classList.remove(DARKMODECLASSNAME);
 
   let toggleThemeChange = () => {
-    if (darkMode === true) {
+    if ($DARKMODE) {
       // Update localstorage
       localStorage.setItem(LOCALSTORAGEITEM, DARKMODECLASSNAME);
       window.document.body.classList.add(DARKMODECLASSNAME);
@@ -49,28 +47,45 @@
     }
   }
 
-  let handleMenuDispatch = () => {
-    dispatch('BurgerBtnAction', {
-      toggleMenuBtnClick: menuIsActive
-    });
-  }
-
   let handleMenuBtnAction = () => {
-    menuIsActive = !menuIsActive;  
-    MenuBtnpressed = !MenuBtnpressed;
-    handleMenuDispatch();
+    MENUISACTIVE.set(!$MENUISACTIVE);  
+    MENUBTNPRESSED.set(!$MENUBTNPRESSED);
   };
+
+  onMount( async () => {
+	
+    await fetch('<@HOME@>').then(() => {      
+      setTimeout(function(){ handleOnCompleted(last_id, 'load') }, 800);   
+    })
+
+  });
+
+  let sectionsArray = getContext('sections');
 
   // Scroll to section  
   const handleOnCompleted = (hash, event) => {
     let top; 
 
     if(hash){
-      const element = document.querySelector("#" + hash);
-      top = element.offsetTop;
-      
-      if( !MenuBtnpressed ){
-        top = top - 64;          
+
+      if (sectionsArray.length > 0) {
+        for (let i = 0; i < sectionsArray.length; i++) {
+          var id = sectionsArray[i].el.getAttribute('id');
+
+          if(!sectionsArray[i].isVisible){
+            sectionsArray[i].isVisible = !sectionsArray[i].isVisible;
+            sectionsArray[i].el.classList.add(SLIDETOP);
+          }
+          
+          if (hash === id){
+            if( SCREENLG ){
+              top = sectionsArray[i].elTop - 64;          
+            }else{
+              top = sectionsArray[i].elTop;
+            }
+            break;
+          }
+        }
       }
     }else{
       top = 0;
@@ -81,22 +96,37 @@
       behavior: 'smooth' // smooth scroll
     });      
 
-    if(event == 'click' && MenuBtnpressed){ handleMenuBtnAction() }
+    if(event == 'click' && $MENUBTNPRESSED){ handleMenuBtnAction() }
   }
 
-  onMount(() => {
-    setTimeout(function(){ handleOnCompleted(last_id, 'load') }, 1000);    
-  });
+  $: (() => {
+    if($HEADERINTROEND){
+      SHOWMENUEITEM.set(true);
+    }
+  })();
+
+  const spin = () => {
+    return {
+        delay: MENUITEMANIMDELAY,
+        duration: MENUITEMANIMDURATION,
+        css: t => {
+          const eased = elasticOut(t);
+          return `transform: scale(${eased}) rotate(${eased * 360}deg);`
+        }
+      };
+  };
+
 </script>
 <nav
-  class="navbar {menuIsActive ? 'navbar-active': 'w-12 h-12'} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
+  class="navbar {$MENUISACTIVE ? 'navbar-active': 'w-12 h-12'} lg:w-auto lg:h-auto lg:relative fixed right-0 bottom-0 mr-2 mb-2"
 >
   <div
     class="navbar-content w-12 h-12 lg:w-auto lg:w-full flex-grow lg:flex lg:items-center lg:w-auto lg:block lg:mt-2 lg:mt-0 lg:bg-transparent p-4 lg:p-0 z-20"
     id="navbarNav"
   >
+  <!-- Device toggle menu button -->
     <Button
-      remove="rounded py-2 px-4 {menuIsActive ? 'hover:elevation-5' : ''} relative"
+      remove="rounded py-2 px-4 {$MENUISACTIVE ? 'hover:elevation-5' : ''} relative"
       add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 hover:bg-white-transLight text-black"
       on:click="{handleMenuBtnAction}"
       data-toggle="collapse"
@@ -117,11 +147,13 @@
         <Icon data="{times}" scale="1.5"></Icon>
       </div>
     </Button>
+    <!-- Nav link -->
     <ul
       class="nav list-reset lg:flex justify-end flex-1 items-center capitalize"
     >
-      {#each navlists as list, i}
-      <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
+      {#each $NAVBAR_DATA as list, i}
+      {#if $SHOWMENUEITEM}
+      <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0" in:spin>
         <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
           <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
             <div slot="activator">
@@ -133,19 +165,24 @@
           </Tooltip>
         </RouterLink>
       </li>
+      {/if}
       {/each}
     </ul>
-
-    <div class="switch-theme absolute lg:relative items-center text-center justify-center bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0">
-      <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block">
+    <!-- Switch theme button -->
+    {#if $SHOWMENUEITEM}
+    <div class="switch-theme absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0" in:spin>
+      <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block absolute">
         <div slot="activator" on:click="{toggleThemeChange}">
-          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center" bind:value={darkMode} flat>
-            <Icon data="{adjust}" scale="1.5" label={darkMode ? TEXTLIGHT : TEXTDARK}></Icon>
+          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center items-center" bind:value={$DARKMODE} flat>
+            <Icon data="{adjust}" scale="1.5" label={$DARKMODE ? TEXTLIGHT : TEXTDARK}></Icon>
           </Button>
         </div>
-        {darkMode ? TEXTLIGHT : TEXTDARK}
+        {$DARKMODE ? TEXTLIGHT : TEXTDARK}
       </Tooltip>
     </div>
+    {/if}
+    <!-- Back to top button -->
+    <BackToTop/>
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="lg:hidden">
       <defs>

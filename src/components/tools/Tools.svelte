@@ -1,34 +1,9 @@
 <script>
-  import { onMount } from "svelte";
   import { Chip } from "smelte";
+  import { TOOLS_DATA } from "../../store/data";
 
-  export let toolsData = {};
-  const { NAME, TITLE, LISTS } = toolsData;
-
-  let y = 0;
-  let show = false;
-  let element;
-  let elementTop;
-  let elementContent;
-
-  onMount(() => {
-    element = document.querySelector("#" + NAME);
-  });
-
-  $: (() => {
-    if (element != undefined) {
-      elementTop = element.offsetTop;
-      let elementHeight = element.offsetHeight;
-      let viewPortHeight = window.innerHeight;
-
-      if (elementTop + y / 4 < viewPortHeight + y && !show) {
-        show = !show;
-        element.classList.add("slide-top");
-      }
-    }
-  })();
+  const { NAME, TITLE, LISTS } = $TOOLS_DATA;
 </script>
-<svelte:window bind:scrollY="{y}" />
 
 <div class="tools-content">
   <h1

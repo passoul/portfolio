@@ -1,10 +1,10 @@
 <script>
+  import { CV_DATA } from "../../../store/data";
   import { Button } from "smelte";
   import Icon from "svelte-awesome";
   import { download } from "svelte-awesome/icons";
 
-  export let cvData = {};
-  const { NAME, TITLE, BTNTEXT, URL } = cvData;
+  const { NAME, TITLE, BTNTEXT, URL } = $CV_DATA;
 </script>
 
 <div class="cv-content">

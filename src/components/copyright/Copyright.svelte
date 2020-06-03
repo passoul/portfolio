@@ -1,7 +1,9 @@
 <script>
-  export let copyrightData = {};
+  import { COPYRIGHT_DATA } from "../../store/data";
+
   export let copyrightClass;
-  const { TEXT } = copyrightData;
+
+  const { TEXT } = $COPYRIGHT_DATA;
 </script>
 
 <div class="{copyrightClass}">
