@@ -1,7 +1,7 @@
 <script>
   import { CV_DATA } from "../../../store/data";
-  import { Button } from "smelte";
   import Icon from "svelte-awesome";
+  import { Button } from "smelte";
   import { download } from "svelte-awesome/icons";
 
   const { NAME, TITLE, BTNTEXT, URL } = $CV_DATA;

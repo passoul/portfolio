@@ -15,7 +15,7 @@
   } from "svelte-awesome/icons";
   import { DARKMODECLASSNAME, LOCALSTORAGEITEM, SLIDETOP, MENUITEMANIMDURATION, MENUITEMANIMDELAY, SCREENLG } from "../../store/constant";
   import { NAVBAR_DATA, THEMESWITCH_DATA	} from "../../store/data";
-  import { MENUISACTIVE, MENUBTNPRESSED, DARKMODE, HEADERINTROEND, SHOWMENUEITEM	} from "../../store/states";
+  import { MENUISACTIVE, MENUBTNPRESSED, DARKMODE, HEADERINTROEND, SHOWMENUEITEM, TRIGGERPOINT, SHOWBACKTOTOP	} from "../../store/states";
   import BackToTop from '../buttons/backtotop/BackToTop.svelte';
 
   // IconTab
@@ -25,10 +25,12 @@
   
   const { TEXTDARK, TEXTLIGHT } = $THEMESWITCH_DATA;
   
-  DARKMODE.set(currentTheme === DARKMODECLASSNAME ? true : false);
-
   let last_id = window.location.hash.slice(1);
   const menuItemLenght = $NAVBAR_DATA.length;
+
+  let MenuMobileActive;
+
+  DARKMODE.set(currentTheme === DARKMODECLASSNAME ? true : false);
 
   // Handle theme mode fonction
   currentTheme === DARKMODECLASSNAME
@@ -40,10 +42,12 @@
       // Update localstorage
       localStorage.setItem(LOCALSTORAGEITEM, DARKMODECLASSNAME);
       window.document.body.classList.add(DARKMODECLASSNAME);
+      // DARKMODE.set(true);
     } else {
       // Update localstorage
       localStorage.removeItem(LOCALSTORAGEITEM);
       window.document.body.classList.remove(DARKMODECLASSNAME);
+      // DARKMODE.set(false);
     }
   }
 
@@ -98,8 +102,8 @@
 
     if(event == 'click' && $MENUBTNPRESSED){ handleMenuBtnAction() }
   }
-
   $: (() => {
+    MenuMobileActive = $MENUISACTIVE && !SCREENLG;
     if($HEADERINTROEND){
       SHOWMENUEITEM.set(true);
     }
@@ -127,7 +131,7 @@
   <!-- Device toggle menu button -->
     <Button
       remove="rounded py-2 px-4 {$MENUISACTIVE ? 'hover:elevation-5' : ''} relative"
-      add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 hover:bg-white-transLight text-black"
+      add="rounded-full lg:hidden w-12 h-12 absolute bottom-0 right-0 z-10 hover:bg-white-transLight text-black {MenuMobileActive ? 'ease-linear duration-200 scale-75 translate-x-0' : ''}"
       on:click="{handleMenuBtnAction}"
       data-toggle="collapse"
       data-target="#navbarNav"
@@ -153,27 +157,32 @@
     >
       {#each $NAVBAR_DATA as list, i}
       {#if $SHOWMENUEITEM}
-      <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0" in:spin>
-        <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
-          <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
-            <div slot="activator">
-              {#each iconTab as icon, i} {#each Object.entries(icon) as object}
-              {#if object[0] === list.icon}
-              <Icon data="{icon}" scale="1.5"></Icon>{/if} {/each} {/each}
-            </div>
-            {list.label}
-          </Tooltip>
-        </RouterLink>
-      </li>
+        <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 text-black transition {!SCREENLG ? i == 0 ? 'duration-400 -translate-y-48' : i == 1 ? 'duration-300 -translate-y-36' : i == 2 ? 'duration-200 -translate-y-24' : i == 3 ? 'duration-100 -translate-y-12' : '' : ''}" in:spin
+        class:ease-out={!SCREENLG}
+        class:transform={MenuMobileActive}>
+          <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
+            <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
+              <div slot="activator">
+                {#each iconTab as icon, i} {#each Object.entries(icon) as object}
+                {#if object[0] === list.icon}
+                <Icon data="{icon}" scale="1.5"></Icon>{/if} {/each} {/each}
+              </div>
+              {list.label}
+            </Tooltip>
+          </RouterLink>
+        </li>
       {/if}
       {/each}
     </ul>
     <!-- Switch theme button -->
     {#if $SHOWMENUEITEM}
-    <div class="switch-theme absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0" in:spin>
+    <div class="switch-theme absolute lg:relative bg-primary-400 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition" in:spin
+    class:transform={MenuMobileActive}
+    class:-translate-x-12={MenuMobileActive}
+    class:duration-500={MenuMobileActive}>
       <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block absolute">
         <div slot="activator" on:click="{toggleThemeChange}">
-          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center items-center" bind:value={$DARKMODE} flat>
+          <Button class="px-4 text-sm hover:bg-transparent p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center items-center"  bind:value={$DARKMODE} flat>
             <Icon data="{adjust}" scale="1.5" label={$DARKMODE ? TEXTLIGHT : TEXTDARK}></Icon>
           </Button>
         </div>
@@ -230,55 +239,17 @@
   .switch-theme{
     @apply cursor-pointer;
   }
+  :global(.navbar-active .nav-item, .navbar-active .switch-theme){
+    will-change: transform;
+  }
   :global(.nav-item a){
-    @apply inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center text-black transition-all duration-200 ease-in-out;
+    @apply inline-block font-bold no-underline rounded-full w-12 h-12 flex items-center text-center justify-center transition-all duration-200 ease-in-out;
   }
-  .nav-item,
-  .switch-theme {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transition: -webkit-transform ease-out 200ms;
-    transition: -webkit-transform ease-out 200ms;
-    transition: transform ease-out 200ms;
-    transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
+  .-translate-y-36 {
+    --transform-translate-y: -9rem;
   }
-  .navbar-active button {
-    -webkit-transition-timing-function: linear;
-    transition-timing-function: linear;
-    -webkit-transition-duration: 200ms;
-    transition-duration: 200ms;
-    -webkit-transform: scale(0.8, 0.8) translate3d(0, 0, 0);
-    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
-  }
-  .navbar-active .nav-item:nth-child(1) {
-    -webkit-transition-duration: 410ms;
-    transition-duration: 410ms;
-    -webkit-transform: translate3d(320px, 0, 0);
-    transform: translate3d(0, -192px, 0);
-  }
-  .navbar-active .nav-item:nth-child(2) {
-    -webkit-transition-duration: 330ms;
-    transition-duration: 330ms;
-    -webkit-transform: translate3d(240px, 0, 0);
-    transform: translate3d(0, -144px, 0);
-  }
-  .navbar-active .nav-item:nth-child(3) {
-    -webkit-transition-duration: 250ms;
-    transition-duration: 250ms;
-    -webkit-transform: translate3d(160px, 0, 0);
-    transform: translate3d(0, -96px, 0);
-  }
-  .navbar-active .nav-item:nth-child(4) {
-    -webkit-transition-duration: 170ms;
-    transition-duration: 170ms;
-    -webkit-transform: translate3d(80px, 0, 0);
-    transform: translate3d(0, -48px, 0);
-  }
-  .navbar-active .switch-theme {
-    -webkit-transition-duration: 410ms;
-    transition-duration: 410ms;
-    -webkit-transform: translate3d(320px, 0, 0);
-    transform: translate3d(-48px, 0, 0);
+  .duration-400{
+    transition-duration: 400ms;
   }
   .navbar{
     -webkit-filter: url(#shadowed-goo);

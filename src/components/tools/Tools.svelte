@@ -16,7 +16,7 @@
   >
     {#each LISTS as list, i}
     <li class="tools-item mt-2 mr-2">
-      <Chip selectable="{false}">{list}</Chip>
+      <Chip selectable="{false}" add="transition">{list}</Chip>
     </li>
     {/each}
   </ul>

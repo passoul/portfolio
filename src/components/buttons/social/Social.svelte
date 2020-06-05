@@ -32,8 +32,14 @@
   :global(.item a svg) {
     @apply opacity-50;
     @apply transition-all duration-200 ease-in-out;
+    fill: black;
+    opacity: 0.5;
   }
   :global(.item a:hover svg) {
     @apply opacity-100;
+    opacity: 1;
+  }
+  :global(.mode-dark .item a svg) {
+    fill: white;
   }
 </style>

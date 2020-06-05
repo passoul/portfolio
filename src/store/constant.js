@@ -3,7 +3,7 @@ export const DARKMODECLASSNAME = "mode-dark";
 export const LOCALSTORAGEITEM = "theme";
 
 // Breackpoint
-export const LG = 1023;
+export const LG = "1023px";
 export const SCREENLG = window.matchMedia("(min-width: " + LG + ")").matches;
 
 // TAGS ID
