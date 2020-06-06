@@ -53,7 +53,7 @@
         <div class="container mx-auto flex flex-wrap flex-col lg:flex-row content-center">
             {#if $SHOWPROFIL}
             <div class="profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-8 lg:mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-5/6 lg:w-auto" transition:fly="{{delay: PROFILANIMDELAY, duration: PROFILANIMDURATION, y: PROFILANIMY, opacity: PROFILANIMOPACITY}}">
-                <Avatar avatarClass="lg:hidden" />
+                <Avatar avatarClass="lg:hidden" position="profil" />
                 <div class="flex flex-col w-full justify-center items-start text-center lg:text-left pb-4">
                     <Profil />
                     <Social socialClass="mx-auto lg:mx-0"/>
@@ -62,10 +62,10 @@
         {/if}
         </div>
     </section>
-    <SeperateBar seperateBarClass="wave-top dark:bg-gray-900 bg-white"/>
+    <SeperateBar seperateBarClass="dark:bg-gray-900 bg-white" position="top"/>
    
     {#each sectionListObj as element, i}
-        <section id="{element.NAME}" class="{element.NAME == 'skills' || element.NAME == 'tools' ? 'border-b dark:bg-gray-900 bg-white ' : '' }{element.NAME == 'skills' || element.NAME == 'tools' || element.NAME == 'trust' ? 'py-8 ' : ''}{element.NAME == 'cv' ? 'text-center py-6 pb-6' : element.NAME == 'skills' || element.NAME == 'tools' ? element.NAME == 'skills' ? 'dark:border-gray-800' : 'dark:border-gray-500' : 'bg-white-transDark'} {element.NAME}-section">
+        <section id="{element.NAME}" class="{element.NAME == 'skills' || element.NAME == 'tools' ? 'border-b dark:bg-gray-900 bg-white ' : '' }{element.NAME == 'skills' || element.NAME == 'tools' || element.NAME == 'trust' ? 'py-8 ' : ''}{element.NAME == 'cv' ? 'text-center py-6 pb-6' : element.NAME == 'skills' || element.NAME == 'tools' ? element.NAME == 'skills' ? 'dark:border-gray-800' : 'dark:border-gray-500' : 'bg-white-transDark'} opacity-0 {element.NAME}-section">
             <div class="container mx-auto pt-4 pb-6">
                 {#if element.NAME == 'skills'}
                     <Skills/> 
@@ -81,7 +81,7 @@
             </div>
         </section>
         {#if i == 2}
-            <SeperateBar seperateBarClass="wave-bottom"/>
+            <SeperateBar position="bottom"/>
         {/if}
     {/each}
 <style>
@@ -105,9 +105,6 @@
     }
     .profil-box{
         @apply bg-opacity-75;
-    }
-    :global(.skills-section, .tools-section, .trust-section, .cv-section){
-		opacity: 0;
     }
     :global(.slide-top) {
         -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

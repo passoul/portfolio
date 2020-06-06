@@ -13,16 +13,11 @@
     {#each LISTS as { name, url, rel, target }, i}
     <li class="item inline-block mr-3">
       <a href="{url}" {rel} {target} data-name="{name}">
-        {#if name === "twitter"}
-        <Icon data="{twitter}" title="{name}" label="{name}" scale="1.2"></Icon>
-        {/if} {#if name === "linkedin"}
         <Icon
-          data="{linkedinSquare}"
-          title="{name}"
+          data="{name === 'twitter'? twitter : linkedinSquare}"
           label="{name}"
           scale="1.2"
         ></Icon>
-        {/if}
       </a>
     </li>
     {/each}

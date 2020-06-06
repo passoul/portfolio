@@ -100,7 +100,9 @@
       behavior: 'smooth' // smooth scroll
     });      
 
-    if(event == 'click' && $MENUBTNPRESSED){ handleMenuBtnAction() }
+    if(event == 'click' && $MENUBTNPRESSED){ 
+      handleMenuBtnAction() 
+    }
   }
   $: (() => {
     MenuMobileActive = $MENUISACTIVE && !SCREENLG;
@@ -141,12 +143,12 @@
       id="btnMenu"
     >
       <div
-        class="bars ease-in-out duration-300 delay-75 transition-all absolute"
+        class="bars ease-in-out duration-300 delay-75 transition-all absolute {$MENUISACTIVE ? 'transform rotate-90 scale-0':''}"
       >
         <Icon data="{bars}" scale="1.5"></Icon>
       </div>
       <div
-        class="cross ease-in-out duration-300 delay-75 transition-all absolute"
+        class="cross ease-in-out duration-300 delay-75 transition-all absolute {!$MENUISACTIVE ? 'transform -rotate-90 scale-0':''}"
       >
         <Icon data="{times}" scale="1.5"></Icon>
       </div>
@@ -176,7 +178,7 @@
     </ul>
     <!-- Switch theme button -->
     {#if $SHOWMENUEITEM}
-    <div class="switch-theme absolute lg:relative bg-primary-400 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition" in:spin
+    <div class="switch-theme absolute lg:relative bg-primary-400 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition cursor-pointer" in:spin
     class:transform={MenuMobileActive}
     class:-translate-x-12={MenuMobileActive}
     class:duration-500={MenuMobileActive}>
@@ -225,19 +227,8 @@
     top: 25%;
     left: 31%;
   }
-  nav.navbar-active .bars {
-    transform: rotate(90deg) scale(0);
-    opacity: 0;
-  }
-  nav:not(.navbar-active) .cross {
-    transform: rotate(-90deg) scale(0);
-    opacity: 0;
-  }
   .switch-theme label {
     @apply sr-only;
-  }
-  .switch-theme{
-    @apply cursor-pointer;
   }
   :global(.navbar-active .nav-item, .navbar-active .switch-theme){
     will-change: transform;

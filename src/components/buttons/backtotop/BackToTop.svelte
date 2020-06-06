@@ -40,7 +40,7 @@
 
 {#if $SHOWBACKTOTOP}
 <div
-  class="backToTop-wrapper h-12 w-12 fixed top-0 transition lg:relative"
+  class="backToTop-wrapper h-12 w-12 fixed top-0 transition lg:relative transform ease-out delay-200 {$MENUISACTIVE ? '-translate-x-12' : 'translate-x-0'}"
   transition:fly="{{delay: BACKTOTOPDELAY, duration: BACKTOTOPDURATION, y: BACKTOTOPANIMY}}"
 >
   <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block">
@@ -59,23 +59,10 @@
 <style>
   :global(.backToTop-wrapper) {
     left: -48px;
-    -webkit-transition: -webkit-transform ease-out 200ms;
-    transition: -webkit-transform ease-out 200ms;
-    transition: transform ease-out 200ms;
-    transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  :global(.navbar-active .backToTop-wrapper) {
-    -webkit-transform: translate3d(-48px, 0, 0);
-    transform: translate3d(-48px, 0, 0);
   }
   @screen lg {
     .backToTop-wrapper {
       left: initial;
-    }
-    :global(.backToTop-wrapper) {
-      @apply bg-transparent !important;
     }
     :global(.backToTop-wrapper button svg) {
       fill: black;

@@ -2,7 +2,7 @@
     import { onMount, setContext } from "svelte";
 	import { fade } from "svelte/transition";
 	import { HEADERID, SHADOWCLASSES } from "./store/constant";
-	import { SHOWHEADER, HEADERINTROEND, MENUISACTIVE } from "./store/states";
+	import { SHOWHEADER, HEADERINTROEND, MENUISACTIVE, DARKMODE } from "./store/states";
 	import createRouter from '@spaceavocado/svelte-router';
 	import RouterView from '@spaceavocado/svelte-router/component/view';
 	import Header_container from "./containers/Header_container.svelte";
@@ -62,7 +62,7 @@
 </script>
 <svelte:window bind:scrollY={y}/>
 {#if $SHOWHEADER}
-<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75" id="header" transition:fade on:introend="{() => HEADERINTROEND.set(true)}">
+<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 transition ease-in duration-100" id="header" transition:fade on:introend="{() => HEADERINTROEND.set(true)}">
 	<Header_container />
 </header>
 {/if}

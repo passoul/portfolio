@@ -22,3 +22,4 @@ export const PROFILANIMY = 100;
 export const PROFILANIMDURATION = 1000;
 export const PROFILANIMDELAY = 100;
 export const PROFILANIMOPACITY = 0.5;
+export const SKILLSPROGRESSDURATION = 1500;

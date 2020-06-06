@@ -1,9 +1,13 @@
 <script>
+  import { DARKMODE } from "../../store/states";
+
+  export let position;
   export let seperateBarClass;
+  seperateBarClass = seperateBarClass || "";
 </script>
 
 <svg
-  class="{seperateBarClass}"
+  class="wave-{position} {seperateBarClass}"
   viewBox="0 0 1439 147"
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -11,12 +15,19 @@
 >
   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
-      <g class="wave-1">
+      <g
+        class="wave-1 delay-150"
+        fill="{position == 'top' ? 'black' : 'rgba(255, 255, 255, 0.2)'}"
+      >
         <path
           d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
         ></path>
       </g>
-      <g class="wave-2" transform="translate(1.000000, 15.000000)">
+      <g
+        class="wave-2 delay-150"
+        transform="translate(1.000000, 15.000000)"
+        fill="{$DARKMODE ? 'gray' : 'black'}"
+      >
         <g
           transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) "
         >
@@ -37,20 +48,3 @@
     </g>
   </g>
 </svg>
-<style>
-  .wave-top div[class*="wave-"] {
-    @apply delay-150;
-  }
-  :global(.wave-top .wave-1, .wave-top .wave-2, .wave-bottom .wave-2) {
-    fill: black;
-  }
-  :global(.mode-dark .wave-top .wave-2, .mode-dark .wave-bottom .wave-2) {
-    fill: gray;
-  }
-  :global(.wave-bottom .wave-1) {
-    fill: rgba(255, 255, 255, 0.2);
-  }
-  :global(.mode-dark .wave-bottom .wave-1) {
-    fill: rgba(255, 255, 255, 0.2);
-  }
-</style>

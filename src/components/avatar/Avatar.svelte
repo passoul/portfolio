@@ -3,22 +3,15 @@
   import { PROFIL_DATA } from "../../store/data.js";
 
   export let avatarClass;
+  export let position;
 
   const { alt, src } = $PROFIL_DATA.AVATAR;
 </script>
 
-<div class="avatar {avatarClass}">
+<div class="avatar {avatarClass} {position == 'header' ? 'w-12 h-12' : 'w-32 h-32'}">
   <Image src="static/images/avatar/avatar.png" {alt} />
 </div>
 <style>
-  :global(header .avatar){
-    width: 48px;
-    height: 48px;
-  }
-  :global(.avatar){
-    width: 128px;
-    height: 128px;
-  }
   :global(.avatar img){
     @apply rounded-full;
   }

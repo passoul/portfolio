@@ -28,22 +28,18 @@ export const SKILLS_DATA = readable({
       cat_items: [
         {
           name: "html",
-          initial: 0,
           level: 80,
         },
         {
           name: "css",
-          initial: 0,
           level: 75,
         },
         {
           name: "javascript",
-          initial: 0,
           level: 65,
         },
         {
           name: "accessibility",
-          initial: 0,
           level: 60,
         },
       ],
@@ -53,37 +49,30 @@ export const SKILLS_DATA = readable({
       cat_items: [
         {
           name: "sass",
-          initial: 0,
           level: 70,
         },
         {
           name: "less",
-          initial: 0,
           level: 65,
         },
         {
           name: "jquery",
-          initial: 0,
           level: 75,
         },
         {
           name: "vue",
-          initial: 0,
           level: 50,
         },
         {
           name: "angular",
-          initial: 0,
           level: 55,
         },
         {
           name: "react",
-          initial: 0,
           level: 45,
         },
         {
           name: "svelte",
-          initial: 0,
           level: 65,
         },
       ],

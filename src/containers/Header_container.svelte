@@ -8,17 +8,8 @@
 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
 	<div class="pl-4 lg:flex hidden">
 		<RouterLink to='<@HOME@>'>
-		<Avatar avatarClass="hidden lg:block w-10 h-10"/>
+		<Avatar avatarClass="hidden lg:block" position="header"/>
 		</RouterLink>
 	</div>
 	<Navbar />
 </div>
-
-<style>
-	header{
-		@apply transition ease-in duration-100;
-	}
-	:global(.mode-dark header) {
-		@apply bg-opacity-75 !important;
-	}
-</style>
