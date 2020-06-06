@@ -4960,12 +4960,12 @@ img {
   height: 1rem;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .h-12 {
   height: 3rem;
+}
+
+.h-32 {
+  height: 8rem;
 }
 
 .text-2xl {
@@ -5072,6 +5072,10 @@ img {
 
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .opacity-50 {
@@ -11537,12 +11541,12 @@ img {
   visibility: visible;
 }
 
-.w-10 {
-  width: 2.5rem;
-}
-
 .w-12 {
   width: 3rem;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .w-5\/6 {
@@ -11584,6 +11588,11 @@ img {
   -webkit-transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
       -ms-transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
           transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+}
+
+.scale-0 {
+  --transform-scale-x: 0;
+  --transform-scale-y: 0;
 }
 
 .scale-75 {
@@ -11849,6 +11858,14 @@ img {
 
 .focus\:scale-y-150:focus {
   --transform-scale-y: 1.5;
+}
+
+.rotate-90 {
+  --transform-rotate: 90deg;
+}
+
+.-rotate-90 {
+  --transform-rotate: -90deg;
 }
 
 .hover\:rotate-0:hover {
