@@ -7,7 +7,7 @@
 
 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
 	<div class="pl-4 lg:flex hidden">
-		<RouterLink to='<@HOME@>'>
+		<RouterLink to="/">
 		<Avatar avatarClass="hidden lg:block" position="header"/>
 		</RouterLink>
 	</div>

@@ -26,6 +26,7 @@
   const { TEXTDARK, TEXTLIGHT } = $THEMESWITCH_DATA;
   
   let last_id = window.location.hash.slice(1);
+  
   const menuItemLenght = $NAVBAR_DATA.length;
 
   let MenuMobileActive;
@@ -100,8 +101,14 @@
       behavior: 'smooth' // smooth scroll
     });      
 
-    if(event == 'click' && $MENUBTNPRESSED){ 
+    if(event === 'click' && $MENUBTNPRESSED){ 
       handleMenuBtnAction() 
+    }
+    if(event === 'load'){
+      let el = document.querySelector('.nav-item [href="/#' + hash + '"]'); 
+      if(el != undefined){
+        el.classList = 'active';
+      }
     }
   }
   $: (() => {
@@ -162,7 +169,7 @@
         <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 text-black transition {!SCREENLG ? i == 0 ? 'duration-400 -translate-y-48' : i == 1 ? 'duration-300 -translate-y-36' : i == 2 ? 'duration-200 -translate-y-24' : i == 3 ? 'duration-100 -translate-y-12' : '' : ''}" in:spin
         class:ease-out={!SCREENLG}
         class:transform={MenuMobileActive}>
-          <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
+            <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
             <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block lg:mt-5">
               <div slot="activator">
                 {#each iconTab as icon, i} {#each Object.entries(icon) as object}
@@ -256,10 +263,30 @@
     .nav-item, :global(.switch-theme) {
       @apply bg-transparent;
     }
-    :global(.nav-item a:hover, .switch-theme:hover) {
+    :global(.nav-item a, .switch-theme) {
+      @apply transition duration-200 ease-in-out;
+    }
+    :global(.nav-item a:hover, .nav-item a.active, .switch-theme:hover) {
       @apply bg-black bg-opacity-25;
     }
-    :global(.mode-dark .nav-item a:hover, .mode-dark .switch-theme:hover) {      
+    :global(.nav-item a:after, .switch-theme:after) {
+      @apply pointer-events-none absolute w-full h-full box-content p-1 rounded-full opacity-0;
+      content:'';
+      top: -0.25rem;
+      left: -0.25rem;
+      box-shadow: 0 0 0 2px black;
+      -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
+      -webkit-transform: scale(.8);
+      transform: scale(.8);
+    }
+    :global(.mode-dark .nav-item a:after, .mode-dark .switch-theme:after){
+      box-shadow: 0 0 0 2px white;
+    }
+    :global(.nav-item a:hover:after, .switch-theme:hover:after) {
+        @apply opacity-100 scale-100 transform;
+    }
+    :global(.mode-dark .nav-item a:hover, .mode-dark .nav-item a.active, .mode-dark .switch-theme:hover) {      
       @apply bg-white bg-opacity-25;
     }
     .navbar{

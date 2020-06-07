@@ -4,6 +4,7 @@
   import { SKILLS_DATA } from "../../store/data";
   import { SKILLSANIMEND } from "../../store/states";
   import SkillProgress from "./SkillProgress.svelte";
+  import SectionTitle from "../heading/SectionTitle.svelte";
 
   const { NAME, TITLE, LISTS } = $SKILLS_DATA;
 
@@ -41,10 +42,7 @@
 </script>
 
 <div class="skills-content flex flex-wrap">
-  <h1
-    class="skills-title w-full my-2 text-2xl font-bold leading-tight text-center text-gray-800 capitalize dark:text-gray-100">
-    {TITLE}
-  </h1>
+  <SectionTitle sectionTitle="{TITLE}" />
   {#each LISTS as { cat_title, cat_items }, index}
   <div class="cat-box w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
     <div

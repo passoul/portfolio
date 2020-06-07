@@ -3,16 +3,13 @@
   import Icon from "svelte-awesome";
   import { Button } from "smelte";
   import { download } from "svelte-awesome/icons";
+  import SectionTitle from "../../heading/SectionTitle.svelte";
 
   const { NAME, TITLE, BTNTEXT, URL } = $CV_DATA;
 </script>
 
 <div class="cv-content">
-  <h1
-    class=" w-full my-2 text-2xl font-bold leading-tight text-center text-gray-800 capitalize dark:text-gray-100"
-  >
-    {TITLE}
-  </h1>
+  <SectionTitle sectionTitle="{TITLE}" />
   <div class="mx-auto flex justify-center my-6 py-4 px-8">
     <Button href="{URL}" remove="font-medium" add="flex flex-wrap text-black">
       <Icon data="{download}" scale="1.2"></Icon>

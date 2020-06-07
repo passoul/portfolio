@@ -3,6 +3,7 @@
 	import { fade } from "svelte/transition";
 	import { HEADERID, SHADOWCLASSES } from "./store/constant";
 	import { SHOWHEADER, HEADERINTROEND, MENUISACTIVE, DARKMODE } from "./store/states";
+	import { NAVBAR_DATA } from "./store/data";
 	import createRouter from '@spaceavocado/svelte-router';
 	import RouterView from '@spaceavocado/svelte-router/component/view';
 	import Header_container from "./containers/Header_container.svelte";
@@ -62,7 +63,7 @@
 </script>
 <svelte:window bind:scrollY={y}/>
 {#if $SHOWHEADER}
-<header class="fixed w-full z-30 top-0 dark:bg-black bg-white bg-opacity-75 transition ease-in duration-100" id="header" transition:fade on:introend="{() => HEADERINTROEND.set(true)}">
+<header class="fixed w-full z-30 top-0 dark:bg-black bg-white transition ease-in duration-100" id="header" transition:fade on:introend="{() => HEADERINTROEND.set(true)}">
 	<Header_container />
 </header>
 {/if}
@@ -100,6 +101,9 @@
 		background: #232526;  /* fallback for old browsers */
 		background: -webkit-linear-gradient(to right, #434343, #232526);  /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to right, #434343, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+	header{
+		@apply bg-opacity-75 !important;
 	}
 	.blur-block{
 		filter: blur(2px);

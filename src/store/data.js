@@ -107,7 +107,7 @@ export const TOOLS_DATA = readable({
 });
 export const TRUST_DATA = readable({
   NAME: "trust",
-  TITLE: "they trusted me",
+  TITLE: "they trust me",
   COMPANIES: [
     {
       name: "lwm",
@@ -167,4 +167,4 @@ export const COPYRIGHT_DATA = readable({
   TEXT: "copyright © pascal Soulier 2020",
 });
 // EMPTY DATA
-export const NODATA = "There is no data for the moment";
+export const NOCOMPONENT = "There is no component to load";

@@ -2,7 +2,7 @@
     import { fly } from 'svelte/transition';
     import { getContext } from "svelte";
     import { SLIDETOP, PROFILANIMY, PROFILANIMDURATION, PROFILANIMDELAY, PROFILANIMOPACITY } from "../store/constant";
-    import { NODATA, SKILLS_DATA, TOOLS_DATA,
+    import { NOCOMPONENT, SKILLS_DATA, TOOLS_DATA,
         TRUST_DATA, CV_DATA } from "../store/data";
     import { SHOWPROFIL, SKILLSANIMEND } from "../store/states";
 	import Avatar from "../components/avatar/Avatar.svelte";
@@ -11,11 +11,27 @@
 	import Skills from "../components/skills/Skills.svelte";
 	import Tools from "../components/tools/Tools.svelte";
 	import Trust from "../components/trust/Trust.svelte";
-	import SeperateBar from "../components/seperatebar/SeperateBar.svelte";
 	import Download from "../components/buttons/download/Download.svelte";
+	import SeperateBar from "../components/seperatebar/SeperateBar.svelte";
     
-    const sectionListObj = [$SKILLS_DATA, $TOOLS_DATA,
-        $TRUST_DATA, $CV_DATA];
+    const sectionListObj = [
+        {
+            'component': Skills,
+            'data': $SKILLS_DATA
+        }, 
+        {
+            'component': Tools,
+            'data': $TOOLS_DATA
+        }, 
+        {
+            'component': Trust,
+            'data': $TRUST_DATA
+        }, 
+        {
+            'component': Download,
+            'data': $CV_DATA
+        }, 
+    ];
 
     let y;
     let viewPortHeight = window.innerHeight;
@@ -45,7 +61,6 @@
 
 // Show profil block
   setTimeout(() => { SHOWPROFIL.set(true) }, 1000)
-
 </script>
 
     <svelte:window bind:scrollY={y}/> 
@@ -63,20 +78,13 @@
         </div>
     </section>
     <SeperateBar seperateBarClass="dark:bg-gray-900 bg-white" position="top"/>
-   
-    {#each sectionListObj as element, i}
-        <section id="{element.NAME}" class="{element.NAME == 'skills' || element.NAME == 'tools' ? 'border-b dark:bg-gray-900 bg-white ' : '' }{element.NAME == 'skills' || element.NAME == 'tools' || element.NAME == 'trust' ? 'py-8 ' : ''}{element.NAME == 'cv' ? 'text-center py-6 pb-6' : element.NAME == 'skills' || element.NAME == 'tools' ? element.NAME == 'skills' ? 'dark:border-gray-800' : 'dark:border-gray-500' : 'bg-white-transDark'} opacity-0 {element.NAME}-section">
+    {#each sectionListObj as {component, data}, i}
+        <section id="{data.NAME}" class="{data.NAME == 'skills' || data.NAME == 'tools' ? 'border-b dark:bg-gray-900 bg-white ' : '' }{data.NAME == 'skills' || data.NAME == 'tools' || data.NAME == 'trust' ? 'py-8 ' : ''}{data.NAME == 'cv' ? 'text-center py-6 pb-6' : data.NAME == 'skills' || data.NAME == 'tools' ? data.NAME == 'skills' ? 'dark:border-gray-800' : 'dark:border-gray-500' : 'bg-white-transDark'} opacity-0 {data.NAME}-section">
             <div class="container mx-auto pt-4 pb-6">
-                {#if element.NAME == 'skills'}
-                    <Skills/> 
-                {:else if element.NAME == 'tools'}
-                    <Tools/> 
-                {:else if element.NAME == 'trust'}
-                    <Trust/> 
-                {:else if element.NAME == 'cv'}
-                    <Download/> 
+                {#if component != undefined}
+                    <svelte:component this="{component}"/>
                 {:else}
-                    <p>{NODATA}</p>
+                    <p>{NOCOMPONENT}</p>
                 {/if}
             </div>
         </section>

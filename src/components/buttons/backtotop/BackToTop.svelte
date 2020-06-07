@@ -79,5 +79,22 @@
     :global(.mode-dark .backToTop-wrapper button:hover) {
       @apply bg-white bg-opacity-25;
     }
+    :global(.backToTop-wrapper button:after) {
+      @apply pointer-events-none absolute w-full h-full box-content p-1 rounded-full opacity-0;
+      content: "";
+      top: -0.25rem;
+      left: -0.25rem;
+      box-shadow: 0 0 0 2px black;
+      -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+    }
+    :global(.mode-dark .backToTop-wrapper button:after) {
+      box-shadow: 0 0 0 2px white;
+    }
+    :global(.backToTop-wrapper button:hover:after) {
+      @apply opacity-100 scale-100 transform;
+    }
   }
 </style>
