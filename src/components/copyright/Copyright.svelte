@@ -7,5 +7,5 @@
 </script>
 
 <div class="{copyrightClass}">
-  <p class="mt-3">{TEXT}</p>
+  <p class="mt-3 lg:mt-0">{TEXT}</p>
 </div>

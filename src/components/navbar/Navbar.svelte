@@ -13,9 +13,9 @@
     filePdfO,
     wrench,
   } from "svelte-awesome/icons";
-  import { DARKMODECLASSNAME, LOCALSTORAGEITEM, SLIDETOP, MENUITEMANIMDURATION, MENUITEMANIMDELAY, SCREENLG } from "../../store/constant";
+  import { DARKMODECLASSNAME, LOCALSTORAGEITEM, SLIDETOP, MENUITEMANIMDURATION, MENUITEMANIMDELAY, SCREENLG, MENUITEMACTIVECLASS, MENUITEMCLASS } from "../../store/constant";
   import { NAVBAR_DATA, THEMESWITCH_DATA	} from "../../store/data";
-  import { MENUISACTIVE, MENUBTNPRESSED, DARKMODE, HEADERINTROEND, SHOWMENUEITEM, TRIGGERPOINT, SHOWBACKTOTOP	} from "../../store/states";
+  import { MENUISACTIVE, MENUBTNPRESSED, DARKMODE, HEADERINTROEND, SHOWMENUEITEM, TRIGGERBACKTOTOPPOINT, SHOWBACKTOTOP	} from "../../store/states";
   import BackToTop from '../buttons/backtotop/BackToTop.svelte';
 
   // IconTab
@@ -105,9 +105,9 @@
       handleMenuBtnAction() 
     }
     if(event === 'load'){
-      let el = document.querySelector('.nav-item [href="/#' + hash + '"]'); 
+      let el = document.querySelector('.' + MENUITEMCLASS + ' [href="/#' + hash + '"]'); 
       if(el != undefined){
-        el.classList = 'active';
+        el.classList = MENUITEMACTIVECLASS;
       }
     }
   }
@@ -166,7 +166,7 @@
     >
       {#each $NAVBAR_DATA as list, i}
       {#if $SHOWMENUEITEM}
-        <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 text-black transition {!SCREENLG ? i == 0 ? 'duration-400 -translate-y-48' : i == 1 ? 'duration-300 -translate-y-36' : i == 2 ? 'duration-200 -translate-y-24' : i == 3 ? 'duration-100 -translate-y-12' : '' : ''}" in:spin
+        <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 text-black transition flex items-center justify-center {!SCREENLG ? i == 0 ? 'duration-400 -translate-y-48' : i == 1 ? 'duration-300 -translate-y-36' : i == 2 ? 'duration-200 -translate-y-24' : i == 3 ? 'duration-100 -translate-y-12' : '' : ''}" in:spin
         class:ease-out={!SCREENLG}
         class:transform={MenuMobileActive}>
             <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
@@ -185,7 +185,7 @@
     </ul>
     <!-- Switch theme button -->
     {#if $SHOWMENUEITEM}
-    <div class="switch-theme absolute lg:relative bg-primary-400 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition cursor-pointer" in:spin
+    <div class="switch-theme absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition cursor-pointer flex justify-center items-center" in:spin
     class:transform={MenuMobileActive}
     class:-translate-x-12={MenuMobileActive}
     class:duration-500={MenuMobileActive}>
@@ -263,17 +263,26 @@
     .nav-item, :global(.switch-theme) {
       @apply bg-transparent;
     }
+    :global(.nav-item a, .switch-theme button){
+      @apply w-10 h-10;
+    }
     :global(.nav-item a, .switch-theme) {
       @apply transition duration-200 ease-in-out;
     }
-    :global(.nav-item a:hover, .nav-item a.active, .switch-theme:hover) {
+    :global(.switch-theme:hover){
+      @apply bg-opacity-0;
+    }
+    :global(.nav-item a:hover, .nav-item a.active, .switch-theme button:hover) {
       @apply bg-black bg-opacity-25;
     }
     :global(.nav-item a:after, .switch-theme:after) {
-      @apply pointer-events-none absolute w-full h-full box-content p-1 rounded-full opacity-0;
+      @apply pointer-events-none absolute box-content rounded-full opacity-0;
+      width: 84%;
+      height: 84%;
       content:'';
-      top: -0.25rem;
-      left: -0.25rem;
+      top: 0.09rem;
+      left: 0.09rem;
+      padding: 0.15rem;
       box-shadow: 0 0 0 2px black;
       -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
       transition: transform 0.2s, opacity 0.2s;
@@ -286,7 +295,7 @@
     :global(.nav-item a:hover:after, .switch-theme:hover:after) {
         @apply opacity-100 scale-100 transform;
     }
-    :global(.mode-dark .nav-item a:hover, .mode-dark .nav-item a.active, .mode-dark .switch-theme:hover) {      
+    :global(.mode-dark .nav-item a:hover, .mode-dark .nav-item a.active, .mode-dark .switch-theme button:hover) {      
       @apply bg-white bg-opacity-25;
     }
     .navbar{

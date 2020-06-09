@@ -10,6 +10,8 @@ export const SCREENLG = window.matchMedia("(min-width: " + LG + ")").matches;
 export const HEADERID = "header";
 // TAGS CLASSES
 export const SHADOWCLASSES = "shadow";
+export const MENUITEMACTIVECLASS = "active";
+export const MENUITEMCLASS = "nav-item";
 // ANIMATION CLASSES
 export const SLIDETOP = "slide-top";
 // ANIMATION OPTIONS

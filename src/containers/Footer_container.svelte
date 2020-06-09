@@ -4,7 +4,7 @@
 
 </script>
 
-<div class="container mx-auto px-8 w-full flex flex-col py-5">
-    <Social socialClass="flex-1 flex-none"/>
-    <Copyright copyrightClass="flex-1 text-xs flex-shrink" />
+<div class="container mx-auto px-8 w-full flex flex-col py-5 lg:flex-row lg:items-center lg:justify-between">
+    <Social socialClass="lg:w-auto"/>
+    <Copyright copyrightClass="text-xs flex-shrink" />
 </div>

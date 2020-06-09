@@ -10,4 +10,4 @@ export const MENUBTNPRESSED = writable(false);
 export const DARKMODE = writable(false);
 export const SKILLSANIMEND = writable(false);
 
-export const TRIGGERPOINT = readable(600);
+export const TRIGGERBACKTOTOPPOINT = readable(200);

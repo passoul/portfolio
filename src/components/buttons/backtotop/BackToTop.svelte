@@ -7,10 +7,12 @@
     BACKTOTOPANIMY,
     BACKTOTOPDURATION,
     BACKTOTOPDELAY,
+    MENUITEMACTIVECLASS,
+    MENUITEMCLASS,
   } from "../../../store/constant";
   import {
     SHOWBACKTOTOP,
-    TRIGGERPOINT,
+    TRIGGERBACKTOTOPPOINT,
     HEADERINTROEND,
     MENUISACTIVE,
     MENUBTNPRESSED,
@@ -29,9 +31,16 @@
       MENUBTNPRESSED.set(!$MENUBTNPRESSED);
     }
     history.replaceState(null, null, " ");
+    // Remove active menu item
+    let activeMenuItem = document.querySelector(
+      "." + MENUITEMCLASS + " ." + MENUITEMACTIVECLASS
+    );
+    if (activeMenuItem != undefined) {
+      activeMenuItem.classList.remove(MENUITEMACTIVECLASS);
+    }
   }
 
-  $: y > $TRIGGERPOINT && $HEADERINTROEND
+  $: y > $TRIGGERBACKTOTOPPOINT && $HEADERINTROEND
     ? SHOWBACKTOTOP.set(true)
     : SHOWBACKTOTOP.set(false);
 </script>
@@ -40,7 +49,7 @@
 
 {#if $SHOWBACKTOTOP}
 <div
-  class="backToTop-wrapper h-12 w-12 fixed top-0 transition lg:relative transform ease-out delay-200 {$MENUISACTIVE ? '-translate-x-12' : 'translate-x-0'}"
+  class="backToTop-wrapper h-12 w-12 fixed top-0 transition lg:relative transform ease-out delay-200 flex justify-center items-center {$MENUISACTIVE ? '-translate-x-12' : 'translate-x-0'}"
   transition:fly="{{delay: BACKTOTOPDELAY, duration: BACKTOTOPDURATION, y: BACKTOTOPANIMY}}"
 >
   <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block">
@@ -64,6 +73,9 @@
     .backToTop-wrapper {
       left: initial;
     }
+    :global(.backToTop-wrapper button) {
+      @apply w-10 h-10;
+    }
     :global(.backToTop-wrapper button svg) {
       fill: black;
     }
@@ -79,21 +91,24 @@
     :global(.mode-dark .backToTop-wrapper button:hover) {
       @apply bg-white bg-opacity-25;
     }
-    :global(.backToTop-wrapper button:after) {
-      @apply pointer-events-none absolute w-full h-full box-content p-1 rounded-full opacity-0;
+    :global(.backToTop-wrapper:after) {
+      @apply pointer-events-none absolute box-content p-1 rounded-full opacity-0;
+      width: 84%;
+      height: 84%;
       content: "";
-      top: -0.25rem;
-      left: -0.25rem;
+      top: 0.09rem;
+      left: 0.09rem;
+      padding: 0.15rem;
       box-shadow: 0 0 0 2px black;
       -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
       transition: transform 0.2s, opacity 0.2s;
       -webkit-transform: scale(0.8);
       transform: scale(0.8);
     }
-    :global(.mode-dark .backToTop-wrapper button:after) {
+    :global(.mode-dark .backToTop-wrapper:after) {
       box-shadow: 0 0 0 2px white;
     }
-    :global(.backToTop-wrapper button:hover:after) {
+    :global(.backToTop-wrapper:hover:after) {
       @apply opacity-100 scale-100 transform;
     }
   }
