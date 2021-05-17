@@ -101,13 +101,19 @@
       behavior: 'smooth' // smooth scroll
     });      
 
-    if(event === 'click' && $MENUBTNPRESSED){ 
+    if(event === 'click'){
+      let el = document.querySelector('.' + MENUITEMCLASS + ' a.' + MENUITEMACTIVECLASS);
+      if(el != undefined){
+        el.classList.remove(MENUITEMACTIVECLASS);
+      }
+     if($MENUBTNPRESSED){ 
       handleMenuBtnAction() 
+     }
     }
     if(event === 'load'){
       let el = document.querySelector('.' + MENUITEMCLASS + ' [href="/#' + hash + '"]'); 
       if(el != undefined){
-        el.classList = MENUITEMACTIVECLASS;
+        el.classList.add(MENUITEMACTIVECLASS);
       }
     }
   }
@@ -166,7 +172,7 @@
     >
       {#each $NAVBAR_DATA as list, i}
       {#if $SHOWMENUEITEM}
-        <li class="nav-item mr-3 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 text-black transition flex items-center justify-center {!SCREENLG ? i == 0 ? 'duration-400 -translate-y-48' : i == 1 ? 'duration-300 -translate-y-36' : i == 2 ? 'duration-200 -translate-y-24' : i == 3 ? 'duration-100 -translate-y-12' : '' : ''}" in:spin
+        <li class="nav-item mr-3 lg:mx-6 absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 text-black transition flex items-center justify-center {!SCREENLG ? i == 0 ? 'duration-400 -translate-y-48' : i == 1 ? 'duration-300 -translate-y-36' : i == 2 ? 'duration-200 -translate-y-24' : i == 3 ? 'duration-100 -translate-y-12' : '' : ''}" in:spin
         class:ease-out={!SCREENLG}
         class:transform={MenuMobileActive}>
             <RouterLink to={{name: 'HOME', hash: list.label}} on:completed={handleOnCompleted(list.label, 'click')}>
@@ -185,7 +191,7 @@
     </ul>
     <!-- Switch theme button -->
     {#if $SHOWMENUEITEM}
-    <div class="switch-theme absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition cursor-pointer flex justify-center items-center" in:spin
+    <div class="switch-theme absolute lg:relative bg-primary-500 hover:bg-primary-400 rounded-full w-12 h-12 top-0 left-0 transition cursor-pointer flex justify-center items-center mr-3 lg:mx-6" in:spin
     class:transform={MenuMobileActive}
     class:-translate-x-12={MenuMobileActive}
     class:duration-500={MenuMobileActive}>

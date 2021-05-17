@@ -2,6 +2,7 @@ import { writable, readable } from "svelte/store";
 
 export const SHOWHEADER = writable(false);
 export const SHOWPROFIL = writable(false);
+export const SHOWINTRO = writable(false);
 export const SHOWMENUEITEM = writable(false);
 export const SHOWBACKTOTOP = writable(false);
 export const HEADERINTROEND = writable(false);

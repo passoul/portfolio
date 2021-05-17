@@ -2,7 +2,7 @@
   import { fly } from "svelte/transition";
   import { Tooltip, Button } from "smelte";
   import Icon from "svelte-awesome";
-  import { arrowUp } from "svelte-awesome/icons";
+  import { angleUp } from "svelte-awesome/icons";
   import {
     BACKTOTOPANIMY,
     BACKTOTOPDURATION,
@@ -19,6 +19,7 @@
   } from "../../../store/states";
 
   let y;
+  let bttVisible = false;
 
   function scrollUp() {
     window.scrollTo({
@@ -49,16 +50,28 @@
 
 {#if $SHOWBACKTOTOP}
 <div
-  class="backToTop-wrapper h-12 w-12 fixed top-0 transition lg:relative transform ease-out delay-200 flex justify-center items-center {$MENUISACTIVE ? '-translate-x-12' : 'translate-x-0'}"
+  class="backToTop-wrapper h-12 w-12 fixed top-0 transition lg:relative transform ease-out delay-200 flex justify-center items-center lg:ml-6 {$MENUISACTIVE ? '-translate-x-12' : 'translate-x-0'}"
   transition:fly="{{delay: BACKTOTOPDELAY, duration: BACKTOTOPDURATION, y: BACKTOTOPANIMY}}"
+  on:introend="{() => bttVisible = true}"
 >
   <Tooltip class="capitalize bg-dark-200 bg-opacity-75 hidden lg:block">
     <div slot="activator">
       <Button
         on:click="{scrollUp}"
-        class="px-4 text-sm hover:bg-primary-400 p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center bg-primary-500 hover:bg-primary-400 items-center"
+        class="px-4 text-sm hover:bg-primary-400 p-4 pt-1 pb-1 pl-2 pr-2 text-xs h-12 w-12 rounded-full lg:relative text-black flex justify-center bg-primary-500 hover:bg-primary-400 items-center flex-col"
       >
-        <Icon data="{arrowUp}" scale="1.5" label="Back to top"></Icon>
+        <Icon
+          data="{angleUp}"
+          scale="1.5"
+          label="first arrow"
+          class="absolute transition delay-75 duration-75 ease-in transform scale-0 {bttVisible ? 'arrowAnimIn' : 'arrowAnimOut'}"
+        ></Icon>
+        <Icon
+          data="{angleUp}"
+          scale="1.5"
+          label="second arrow"
+          class="absolute transition delay-500 duration-500 ease-in transform scale-0 {bttVisible ? 'arrowAnimIn2' : 'arrowAnimOut2'}"
+        ></Icon>
       </Button>
     </div>
     Back to top
@@ -68,6 +81,26 @@
 <style>
   :global(.backToTop-wrapper) {
     left: -48px;
+  }
+  :global(.backToTop-wrapper button svg:first-of-type) {
+    top: 10px;
+    left: 16px;
+  }
+  :global(.backToTop-wrapper button svg:last-of-type) {
+    top: 17px;
+    left: 16px;
+  }
+  :global(.arrowAnimIn) {
+    @apply opacity-100 translate-y-0 scale-100;
+  }
+  :global(.arrowAnimIn2) {
+    @apply opacity-100 translate-y-0 scale-75;
+  }
+  :global(.arrowAnimOut) {
+    @apply opacity-0 translate-y-1;
+  }
+  :global(.arrowAnimOut2) {
+    @apply opacity-0 translate-y-8;
   }
   @screen lg {
     .backToTop-wrapper {
@@ -87,6 +120,14 @@
     }
     :global(.mode-dark .backToTop-wrapper button svg) {
       fill: white;
+    }
+    :global(.backToTop-wrapper button svg:first-of-type) {
+      top: 5px;
+      left: 12px;
+    }
+    :global(.backToTop-wrapper button svg:last-of-type) {
+      top: 12px;
+      left: 12px;
     }
     :global(.mode-dark .backToTop-wrapper button:hover) {
       @apply bg-white bg-opacity-25;

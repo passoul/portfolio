@@ -19,6 +19,10 @@ export const PROFIL_DATA = readable({
   FIRSTNAME: "pascal",
   LASTNAME: "soulier",
 });
+export const INTRO_DATA = readable({
+  TEXT:
+    "<!-- A front-end developer links together the world of design and technology, by integrating markup languages, design, scripts and frameworks. Their focus is on user experience, and the technology they implement hinges on how well it will accomplish that efficiency, speed, and smooth functionality. They also make sure that the design appears as it’s supposed to across various platforms and browsers.<br/><br/> -->One of the most satisfying feelings in the world is making a thing that someone else uses. Whether it's a game, an app, or a website, you feel satisfied the moment you see someone using it. You made a thing that was usable.",
+});
 export const SKILLS_DATA = readable({
   NAME: "skills",
   TITLE: "skills",
@@ -100,20 +104,22 @@ export const TOOLS_DATA = readable({
     "wordpress",
     "drupal",
     "sublime text",
-    "notepad++",
     "coda",
     "visual studio code",
+    "Bootstrap",
+    "Google Material Design",
   ],
 });
 export const TRUST_DATA = readable({
   NAME: "trust",
-  TITLE: "they trust me",
+  TITLE: "they trust me / They needed my expertise",
   COMPANIES: [
     {
       name: "lwm",
       logo: "path",
       svg:
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 46" width="200px" height="50px"><path class="filled" d="M0 46h125V0H0v46zm38.8-35l5.4 16.9L49.9 11h5.2l5.5 17 5.6-17h5.3l-7.9 24h-6l-5.3-16.3L46.9 35h-6L33 11h5.8zm68.8 24l-5.4-16.9L96.4 35h-5.2l-5.5-17-5.6 17h-5.3l7.9-24h6L94 27.3 99.5 11h6l7.9 24h-5.8zM12 11h6v19h12v5H12V11z"></path></svg>',
+      tasks: "",
     },
     {
       name: "pmu",

@@ -4,9 +4,10 @@
     import { SLIDETOP, PROFILANIMY, PROFILANIMDURATION, PROFILANIMDELAY, PROFILANIMOPACITY } from "../store/constant";
     import { NOCOMPONENT, SKILLS_DATA, TOOLS_DATA,
         TRUST_DATA, CV_DATA } from "../store/data";
-    import { SHOWPROFIL, SKILLSANIMEND } from "../store/states";
+    import { SHOWPROFIL, SKILLSANIMEND, SHOWINTRO } from "../store/states";
 	import Avatar from "../components/avatar/Avatar.svelte";
 	import Profil from "../components/heading/Profil.svelte";
+	import Intro from "../components/intro/Intro.svelte";
 	import Social from "../components/buttons/social/Social.svelte";
 	import Skills from "../components/skills/Skills.svelte";
 	import Tools from "../components/tools/Tools.svelte";
@@ -64,10 +65,10 @@
 </script>
 
     <svelte:window bind:scrollY={y}/> 
-    <section class="profil mx-auto flex flex-wrap flex-col lg:flex-row items-center bg-black">
-        <div class="container mx-auto flex flex-wrap flex-col lg:flex-row content-center">
-            {#if $SHOWPROFIL}
-            <div class="profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-8 lg:mt-3 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-5/6 lg:w-auto" transition:fly="{{delay: PROFILANIMDELAY, duration: PROFILANIMDURATION, y: PROFILANIMY, opacity: PROFILANIMOPACITY}}">
+    <section class="profil mx-auto flex flex-wrap flex-col lg:justify-start items-center bg-black">
+        <div class="container mx-auto flex flex-wrap flex-col lg:content-start content-center lg:mt-40">
+        {#if $SHOWPROFIL}
+            <div class="profil-box dark:bg-gray-900 bg-white-500 rounded shadow px-4 py-8 lg:px-4 lg:py-4 mt-8 lg:mt-6 mx-3 flex flex-wrap flex-col lg:flex-row items-center delay-200 w-auto lg:w-2/5 lg:justify-start" transition:fly="{{delay: PROFILANIMDELAY, duration: PROFILANIMDURATION, y: PROFILANIMY, opacity: PROFILANIMOPACITY}}" on:introend="{SHOWINTRO.set(true)}">
                 <Avatar avatarClass="lg:hidden" position="profil" />
                 <div class="flex flex-col w-full justify-center items-start text-center lg:text-left pb-4">
                     <Profil />
@@ -75,9 +76,12 @@
                 </div>
             </div>
         {/if}
+        {#if $SHOWINTRO}
+            <Intro />
+        {/if}
         </div>
     </section>
-    <SeperateBar seperateBarClass="dark:bg-gray-900 bg-white" position="top"/>
+    <!-- <SeperateBar seperateBarClass="dark:bg-gray-900 bg-white" position="top"/> -->
     {#each sectionListObj as {component, data}, i}
         <section id="{data.NAME}" class="{data.NAME == 'skills' || data.NAME == 'tools' ? 'border-b dark:bg-gray-900 bg-white ' : '' }{data.NAME == 'skills' || data.NAME == 'tools' || data.NAME == 'trust' ? 'py-8 ' : ''}{data.NAME == 'cv' ? 'text-center py-6 pb-6' : data.NAME == 'skills' || data.NAME == 'tools' ? data.NAME == 'skills' ? 'dark:border-gray-800' : 'dark:border-gray-500' : 'bg-white-transDark'} opacity-0 {data.NAME}-section">
             <div class="container mx-auto pt-4 pb-6">
@@ -88,9 +92,9 @@
                 {/if}
             </div>
         </section>
-        {#if i == 2}
+        <!-- {#if i == 2}
             <SeperateBar position="bottom"/>
-        {/if}
+        {/if} -->
     {/each}
 <style>
     .profil {
@@ -113,6 +117,7 @@
     }
     .profil-box{
         @apply bg-opacity-75;
+        box-shadow: 5px 8px 6px -6px black;
     }
     :global(.slide-top) {
         -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
